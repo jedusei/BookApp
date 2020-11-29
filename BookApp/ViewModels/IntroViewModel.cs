@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace BookApp.ViewModels
 {
-    public class AboutViewModel : BaseViewModel
+    public class IntroViewModel : BaseViewModel
     {
-        public AboutViewModel()
+        public IntroViewModel()
         {
             Title = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamain-quickstart"));

@@ -5,9 +5,9 @@ using Xamarin.Forms.Xaml;
 
 namespace BookApp.Views
 {
-    public partial class AboutPage : ContentPage
+    public partial class IntroPage : ContentPage
     {
-        public AboutPage()
+        public IntroPage()
         {
             InitializeComponent();
         }
