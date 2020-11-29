@@ -22,7 +22,7 @@ namespace BookApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental", "Brush_Experimental", "Shapes_Experimental", "CarouselView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

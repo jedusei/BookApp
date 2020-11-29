@@ -142,4 +142,16 @@
       <Name>BookApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\share_person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_right.png" />
+  </ItemGroup>
 </Project>

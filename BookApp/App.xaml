@@ -7,8 +7,15 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+            <!--COLORS-->
+            <Color x:Key="Primary">#2196F3</Color> 
+            
+            <!--STYLES-->
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="CircularStd"/>
+            </Style>
             <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="CircularStd"/>
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
