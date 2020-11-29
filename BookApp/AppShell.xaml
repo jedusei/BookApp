@@ -29,11 +29,8 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <!--
-        If you would like to navigate to this content you can do so by calling
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
-    <ShellContent Route="IntroPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:IntroPage}" />
+    <ShellContent Route="Intro" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:IntroPage}" />
+    <ShellContent Route="Login" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
 
 
 </Shell>

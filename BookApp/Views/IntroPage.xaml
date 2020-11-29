@@ -31,7 +31,7 @@
                  TranslationX="-60" TranslationY="180">
         </Ellipse>
         <StackLayout Orientation="Vertical" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
-            <CarouselView x:Name="carouselView"  IndicatorView="{Reference indicatorView}" VerticalOptions="FillAndExpand">
+            <CarouselView x:Name="carouselView" IndicatorView="{Reference indicatorView}" Position="{Binding CurrentPage}">
                 <CarouselView.ItemsSource>
                     <x:Array Type="{Type models:IntroItem}">
                        <models:IntroItem Title="Read Books" Description="Create your account to get started. After that, you can share books and make friends." Image="book">
@@ -148,6 +148,9 @@
                             <GradientStop Color="#00D23A" Offset="1"/>
                         </LinearGradientBrush>
                     </Frame.Background>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NextCommand}"/>
+                    </Frame.GestureRecognizers>
                     <Image Source="arrow_right" Scale="0.5"/>
                 </Frame>
             </StackLayout>
@@ -157,6 +160,9 @@
                         <Setter Property="Opacity" Value="0"/>
                     </DataTrigger>
                 </Label.Triggers>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SkipCommand}"/>
+                </Label.GestureRecognizers>
             </Label>
         </StackLayout>
     </AbsoluteLayout>
