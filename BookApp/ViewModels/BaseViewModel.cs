@@ -12,20 +12,11 @@ namespace BookApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        protected readonly INavigationService _navigationService;
 
-        bool isBusy = false;
-        public bool IsBusy
+        public BaseViewModel()
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
-        }
-
-        string title = string.Empty;
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            _navigationService = DependencyService.Get<INavigationService>();
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

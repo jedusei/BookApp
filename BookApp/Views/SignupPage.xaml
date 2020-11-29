@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls"
+             mc:Ignorable="d"
+             x:Class="BookApp.Views.SignupPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FieldLabel" TargetType="Label">
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="TextColor" Value="#445984"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,20,0,10"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Ellipse WidthRequest="300" HeightRequest="300" AbsoluteLayout.LayoutBounds="-60,-140" Opacity="0.6">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="1,1">
+                        <GradientStop Color="#606CFF" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse WidthRequest="55" HeightRequest="55" AbsoluteLayout.LayoutBounds="0.95,350" AbsoluteLayout.LayoutFlags="XProportional" Opacity="0.65">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                        <GradientStop Color="#2DEEF9" Offset="0"/>
+                        <GradientStop Color="#E084F1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <StackLayout Padding="30,70,30,30">
+                    <AbsoluteLayout HorizontalOptions="Center">
+                        <Ellipse WidthRequest="140" HeightRequest="140">
+                            <Ellipse.Fill>
+                                <LinearGradientBrush EndPoint="1,1">
+                                    <GradientStop Color="#FEB665" Offset="0"/>
+                                    <GradientStop Color="#F66EB4" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Image Source="light" WidthRequest="70" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    </AbsoluteLayout>
+
+                    <Label Text="Welcome!" TextColor="#384F7D" FontAttributes="Bold" FontSize="32" Margin="0,20,0,5" HorizontalTextAlignment="Center"/>
+                    <Label Text="Create your account to get started. After that, you can share books and make friends." TextColor="#CC384F7D" FontSize="16" HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Email" Style="{StaticResource FieldLabel}"/>
+                    <controls:FormEntry/>
+                    <Label Text="Password" Style="{StaticResource FieldLabel}"/>
+                    <controls:FormEntry IsPassword="True"/>
+                    <Label Text="Confirm Password" Style="{StaticResource FieldLabel}"/>
+                    <controls:FormEntry IsPassword="True" IsValid="False"/>
+
+                    <Button HorizontalOptions="Center" WidthRequest="300" Text="Sign up" Command="{Binding LoginCommand}" Margin="0,50,0,10"/>
+                    <Label TextColor="#445984" FontSize="16" HorizontalOptions="Center" Margin="0,20,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Already have an account? "/>
+                                <Span Text="Login" FontSize="16" FontAttributes="Bold" TextDecorations="Underline"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+
+</ContentPage>

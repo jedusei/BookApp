@@ -11,6 +11,8 @@ namespace BookApp
         public AppShell()
         {
             InitializeComponent();
+
+            Routes.RegisterRoutes();
         }
 
     }

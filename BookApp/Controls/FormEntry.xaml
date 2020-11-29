@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="BookApp.Controls.FormEntry"
+       x:Name="this"
+       BindingContext="{Reference this}"
+       Padding="0"
+       CornerRadius="8">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="3"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Entry Text="{Binding Text}" Margin="10,0,0,0" Placeholder="{Binding Placeholder}" >
+            <Entry.Triggers>
+                <DataTrigger TargetType="Entry" Binding="{Binding IsPasswordVisible}" Value="False">
+                    <Setter Property="IsPassword" Value="True"/>
+                </DataTrigger>
+            </Entry.Triggers>
+        </Entry>
+
+        <Image Grid.Column="1" Source="eye" WidthRequest="23" Margin="0,0,10,0" IsVisible="{Binding IsPassword}">
+            <Image.Triggers>
+                <DataTrigger TargetType="Image" Binding="{Binding IsPasswordVisible}" Value="True">
+                    <Setter Property="Source" Value="eye_cancel"/>
+                </DataTrigger>
+            </Image.Triggers>
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="PasswordVisibilityToggle_Tapped"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+        <BoxView BackgroundColor="#59E650" Grid.Row="1" Grid.ColumnSpan="2">
+            <BoxView.Triggers>
+                <DataTrigger TargetType="BoxView" Binding="{Binding IsValid}" Value="False">
+                    <Setter Property="BackgroundColor" Value="Red"/>
+                </DataTrigger>
+            </BoxView.Triggers>
+        </BoxView>
+    </Grid>
+</Frame>

@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\EntryRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,4 +155,14 @@
   <ItemGroup>
     <BundleResource Include="Resources\arrow_right.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eye_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\light.png" />
+  </ItemGroup>
+  <ItemGroup />
 </Project>

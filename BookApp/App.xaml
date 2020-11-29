@@ -16,18 +16,25 @@
             </Style>
             <Style TargetType="Button">
                 <Setter Property="FontFamily" Value="CircularStd"/>
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0.5,-1" EndPoint="0.6,1.5">
+                            <GradientStop Color="#BAFB67" Offset="0"/>
+                            <GradientStop Color="#00D23A" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                </VisualState.Setters>
-                            </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                    <Setter Property="Opacity" Value="0.5" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

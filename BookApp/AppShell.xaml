@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:BookApp.Views"
+       xmlns:local="clr-namespace:BookApp.Views" xmlns:bookapp="clr-namespace:BookApp"
        Title="BookApp"
        x:Class="BookApp.AppShell">
 
@@ -29,8 +29,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <ShellContent Route="Intro" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:IntroPage}" />
-    <ShellContent Route="Login" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
-
+    <ShellContent Route="{Static bookapp:Routes.INTRO}" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:IntroPage}"/>
+    <ShellContent Route="{Static bookapp:Routes.SIGNUP}" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:SignupPage}"/>
 
 </Shell>
