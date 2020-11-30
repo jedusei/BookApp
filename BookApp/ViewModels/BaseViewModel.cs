@@ -14,7 +14,8 @@ namespace BookApp.ViewModels
 
         public BaseViewModel()
         {
-            _navigationService = DependencyService.Get<INavigationService>();
+            if (!DesignMode.IsDesignModeEnabled)
+                _navigationService = DependencyService.Get<INavigationService>();
         }
 
         public virtual Task InitializeAsync(object navigationData) => Task.CompletedTask;

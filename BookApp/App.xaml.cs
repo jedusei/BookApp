@@ -34,7 +34,8 @@ namespace BookApp
             InitializeComponent();
             _exitAction = exitAction ?? Quit;
 
-            Platform = DependencyService.Get<IPlatform>();
+            if (!DesignMode.IsDesignModeEnabled)
+                Platform = DependencyService.Get<IPlatform>();
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzU5ODk4QDMxMzgyZTMzMmUzMG9BL2xkNGVFZlZjWmo4Y0RFQ0FFMmUxN0ozVlBzQ282blRQZWJGdWdHS2s9");
 
@@ -68,7 +69,9 @@ namespace BookApp
 
         protected override async void OnStart()
         {
-            await DependencyService.Get<INavigationService>().InitializeAsync();
+            if (!DesignMode.IsDesignModeEnabled)
+                await DependencyService.Get<INavigationService>().InitializeAsync();
+
             Status = AppStatus.Started;
         }
 
