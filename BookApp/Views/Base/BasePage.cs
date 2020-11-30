@@ -28,6 +28,7 @@ namespace BookApp.Views.Base
 
         public BasePage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         public void SetNavigationData(object navigationData)

@@ -34,7 +34,7 @@
             </Path.Fill>
         </Path>
         <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
-            <Label TextColor="White" FontAttributes="Bold" FontSize="25" HorizontalTextAlignment="Center" Padding="0,70,0,20">
+            <Label Style="{StaticResource TitleText}">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="0">
                         <Setter Property="Text" Value="Home"/>

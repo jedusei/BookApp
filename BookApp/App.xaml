@@ -24,6 +24,14 @@
                 <Setter Property="FontFamily" Value="CircularStd"/>
             </Style>
 
+            <Style x:Key="TitleText" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Padding" Value="0,70,0,20"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            
             <Style x:Key="FieldLabel" TargetType="Label">
                 <Setter Property="TextTransform" Value="Uppercase"/>
                 <Setter Property="TextColor" Value="#445984"/>

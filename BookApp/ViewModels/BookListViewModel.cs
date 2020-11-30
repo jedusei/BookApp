@@ -24,7 +24,8 @@ namespace BookApp.ViewModels
 
         public BookListViewModel()
         {
-            _bookService = DependencyService.Get<IBookService>();
+            if (!DesignMode.IsDesignModeEnabled)
+                _bookService = DependencyService.Get<IBookService>();
         }
 
         public override async void OnStart()
