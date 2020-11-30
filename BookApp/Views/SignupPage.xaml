@@ -7,21 +7,16 @@
              x:Class="BookApp.Views.SignupPage"
              NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="FieldLabel" TargetType="Label">
-                <Setter Property="TextTransform" Value="Uppercase"/>
-                <Setter Property="TextColor" Value="#445984"/>
-                <Setter Property="FontSize" Value="12"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="Margin" Value="0,20,0,10"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <ContentPage.BindingContext>
         <viewmodels:SignupViewModel/>
     </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint=".8,.8">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="#F0F4FD" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
     <ContentPage.Content>
         <AbsoluteLayout>
