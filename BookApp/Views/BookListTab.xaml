@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
              x:Class="BookApp.Views.BookListTab"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:models="clr-namespace:BookApp.Models"
              mc:Ignorable="d">
 
     <ContentView.BindingContext>
@@ -14,10 +14,23 @@
         <StackLayout Orientation="Vertical">
             <controls:SearchEntry WidthRequest="315" VerticalOptions="Start" HeightRequest="70" HorizontalOptions="Center" 
                                   Placeholder="Search for book" Icon="search"/>
-            <Label Text="Books reviewed by you" TextColor="#384F7D" FontSize="20" Padding="20,20,0,5"/>
+
+            <Label Text="Books reviewed by you" TextColor="#384F7D" FontSize="20" Padding="20,20,0,5">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Books.Length, FallbackValue=0}" Value="0">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            
             <AbsoluteLayout>
-                <CollectionView IsVisible="False" ItemsSource="{Binding Books}" ItemSizingStrategy="MeasureFirstItem"
+                <CollectionView IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Books}" ItemSizingStrategy="MeasureFirstItem"
                                 AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <CollectionView.Triggers>
+                        <DataTrigger TargetType="CollectionView" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger>
+                    </CollectionView.Triggers>                    
                     <d:CollectionView.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String></x:String>
@@ -26,7 +39,7 @@
                         </x:Array>
                     </d:CollectionView.ItemsSource>
                     <CollectionView.EmptyView>
-                        <StackLayout TranslationY="-30">
+                        <StackLayout TranslationY="-10">
                             <Image Source="bookmark_add" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
                             <Label Text="You have no books as of yet. Just add your first book review to get started."  VerticalOptions="StartAndExpand"
                                        HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
@@ -72,7 +85,13 @@
                     </CollectionView.Footer>
                 </CollectionView>
                 <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   TranslationY="-50" IsRunning="True"/>
+                                   TranslationY="-30" IsRunning="True" IsVisible="False">
+                    <ActivityIndicator.Triggers>
+                        <DataTrigger TargetType="ActivityIndicator" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loading}">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger>
+                    </ActivityIndicator.Triggers>
+                </ActivityIndicator>
                 <Button AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional"
                     Text="Add Book Review" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="0,20"/>
             </AbsoluteLayout>

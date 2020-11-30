@@ -8,7 +8,14 @@ namespace BookApp.ViewModels
     public class BookListViewModel : BaseViewModel
     {
         IBookService _bookService;
+        LoadStatus _loadStatus;
         Book[] _books;
+
+        public LoadStatus LoadStatus
+        {
+            get => _loadStatus;
+            private set => SetProperty(ref _loadStatus, value);
+        }
 
         public Book[] Books
         {
@@ -24,7 +31,9 @@ namespace BookApp.ViewModels
 
         public override async Task InitializeAsync(object navigationData = null)
         {
+            LoadStatus = LoadStatus.Loading;
             Books = await _bookService.GetReviewedBooksAsync();
+            LoadStatus = LoadStatus.Loaded;
         }
     }
 }
