@@ -22,14 +22,50 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <tabview:SfTabView TabHeaderPosition="Bottom" DisplayMode="ImageWithText" TabHeight="70" TabHeaderBackgroundColor="White">
-        <tabview:SfTabView.SelectionIndicatorSettings>
-            <tabview:SelectionIndicatorSettings StrokeThickness="0"/>
-        </tabview:SfTabView.SelectionIndicatorSettings>
-        <tabview:SfTabItem Title="Home" IconFont="&#xf02dc;"/>
-        <tabview:SfTabItem Title="My Books" IconFont="&#xf125f;"/>
-        <tabview:SfTabItem Title="Add Review" IconFont="&#xf06a2;"/>
-        <tabview:SfTabItem Title="Notifications" IconFont="&#xf009c;"/>
-    </tabview:SfTabView>
+    <AbsoluteLayout>
+        <Path Aspect="Fill" StrokeThickness="0" AbsoluteLayout.LayoutBounds="0,0,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional"
+            Data="M0 136.5V0H372V136.5C194.782 160.467 124.363 152.191 0 136.5Z">
+            <Path.Fill>
+                <LinearGradientBrush StartPoint="0.2,1" EndPoint="1,0">
+                    <GradientStop Offset="0" Color="#F66EB4"/>
+                    <GradientStop Offset="1" Color="#FEB665"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+            <Label TextColor="White" FontAttributes="Bold" FontSize="25" HorizontalTextAlignment="Center" Padding="0,20">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="0">
+                        <Setter Property="Text" Value="Home"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="1">
+                        <Setter Property="Text" Value="My Book List"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="2">
+                        <Setter Property="Text" Value="Add Review"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="3">
+                        <Setter Property="Text" Value="Notifications"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <tabview:SfTabView x:Name="tabView" VerticalOptions="FillAndExpand" TabHeaderPosition="Bottom" DisplayMode="ImageWithText" TabHeight="70" TabHeaderBackgroundColor="White">
+                <tabview:SfTabView.SelectionIndicatorSettings>
+                    <tabview:SelectionIndicatorSettings StrokeThickness="0"/>
+                </tabview:SfTabView.SelectionIndicatorSettings>
+                <tabview:SfTabItem Title="Home" IconFont="&#xf02dc;">
+                    <tabview:SfTabItem.Content>
+                        <BoxView/>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+                <tabview:SfTabItem Title="My Books" IconFont="&#xf125f;"/>
+                <tabview:SfTabItem Title="Add Review" IconFont="&#xf06a2;"/>
+                <tabview:SfTabItem Title="Notifications" IconFont="&#xf009c;"/>
+            </tabview:SfTabView>
+        </StackLayout>
+
+    </AbsoluteLayout>
+
+
 
 </base:BasePage>
