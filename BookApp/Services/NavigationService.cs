@@ -12,7 +12,7 @@ namespace BookApp.Services
     {
         public async Task InitializeAsync()
         {
-            await GoToPageAsync<MainPage>();
+            await GoToPageAsync<IntroPage>();
         }
 
         public async Task GoToPageAsync<TPage>(object navigationData = null, bool clearHistory = false) where TPage : BasePage

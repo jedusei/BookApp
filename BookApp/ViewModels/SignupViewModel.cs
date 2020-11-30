@@ -75,7 +75,9 @@ namespace BookApp.ViewModels
             try
             {
                 bool success = await _userService.SignupAsync(Email, Password);
-                if (!success)
+                if (success)
+                    await _navigationService.GoToPageAsync<MainPage>(clearHistory: true);
+                else
                     UserDialogs.Instance.Alert("The specified email has already been registered with another account.", "Error");
             }
             catch

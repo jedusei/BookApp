@@ -62,7 +62,9 @@ namespace BookApp.ViewModels
             try
             {
                 bool success = await _userService.LoginAsync(Email, Password);
-                if (!success)
+                if (success)
+                    await _navigationService.GoToPageAsync<MainPage>(clearHistory: true);
+                else
                     UserDialogs.Instance.Alert("The given email or password is invalid.", "Error");
             }
             catch
