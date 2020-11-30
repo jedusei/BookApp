@@ -1,14 +1,18 @@
 ﻿using BookApp.ViewModels;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace BookApp.Views.Base
 {
-    public abstract class BaseTabbedPage : Xamarin.Forms.TabbedPage, IPage
-    {
-        public static readonly BindableProperty TabBarPlacementBindableProperty = BindableProperty.Create(nameof(TabBarPlacement), typeof(ToolbarPlacement), typeof(BaseTabbedPage), propertyChanged: OnTabBarPlacementChanged);
 
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    public class SingletonPageAttribute : Attribute
+    {
+    }
+
+    public abstract class BasePage : ContentPage
+    {
         const int TRANSITION_DURATION = 250;
         const int DESTROY_DELAY = 2000;
         bool _hasLoaded;
@@ -21,10 +25,9 @@ namespace BookApp.Views.Base
             get => _viewModel;
             set => BindingContext = value;
         }
-        public ToolbarPlacement TabBarPlacement
+
+        public BasePage()
         {
-            get => (ToolbarPlacement)GetValue(TabBarPlacementBindableProperty);
-            set => SetValue(TabBarPlacementBindableProperty, value);
         }
 
         public void SetNavigationData(object navigationData)
@@ -43,13 +46,6 @@ namespace BookApp.Views.Base
             {
                 _viewModel = null;
             }
-        }
-
-        private static void OnTabBarPlacementChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var tabbedPage = bindable as Xamarin.Forms.TabbedPage;
-            tabbedPage.On<Xamarin.Forms.PlatformConfiguration.Android>()
-                    .SetToolbarPlacement((ToolbarPlacement)newValue);
         }
 
         protected override async void OnAppearing()

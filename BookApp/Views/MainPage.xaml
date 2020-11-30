@@ -1,18 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<base:BaseTabbedPage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
-             x:Class="BookApp.Views.MainPage"
-             TabBarPlacement="Bottom" 
-             SelectedTabColor="#384F7D"
-             UnselectedTabColor="#73384F7D">
-    
-    <TabbedPage.BindingContext>
+             x:Class="BookApp.Views.MainPage">
+
+    <ContentPage.BindingContext>
         <viewmodels:MainViewModel/>
-    </TabbedPage.BindingContext>
-    
-    <!--Pages can be added as references or inline-->
-    <ContentPage Title="Home" IconImageSource="home" />
-    <ContentPage Title="My Books" IconImageSource="book_small" />
-    <ContentPage Title="Add Review" IconImageSource="star_add" />
-    <ContentPage Title="Notifications" IconImageSource="bell" />
-</base:BaseTabbedPage>
+    </ContentPage.BindingContext>
+
+</base:BasePage>

@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace BookApp.Views
 {
-    public partial class SignupPage : BaseContentPage
+    public partial class SignupPage : BasePage
     {
         public SignupPage()
         {

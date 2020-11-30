@@ -2,7 +2,7 @@
 
 namespace BookApp.Views
 {
-    public partial class MainPage : BaseTabbedPage
+    public partial class MainPage : BasePage
     {
         public MainPage()
         {

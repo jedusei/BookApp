@@ -2,7 +2,7 @@
 
 namespace BookApp.Views
 {
-    public partial class IntroPage : BaseContentPage
+    public partial class IntroPage : BasePage
     {
         public IntroPage()
         {
