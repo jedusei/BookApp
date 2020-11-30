@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <None Remove="Assets\Circular-Std.ttf" />
+    <None Remove="Assets\materialdesignicons-webfont.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\Circular-Std.ttf" />
+    <EmbeddedResource Include="Assets\materialdesignicons-webfont.ttf" />
   </ItemGroup>
 
   <ItemGroup>

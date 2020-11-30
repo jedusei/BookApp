@@ -1,10 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
-             x:Class="BookApp.Views.MainPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:BookApp.ViewModels" xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             x:Class="BookApp.Views.MainPage"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
         <viewmodels:MainViewModel/>
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="tabview:SfTabItem">
+                <Setter Property="FontIconFontFamily" Value="MaterialIcons"/>
+                <Setter Property="FontIconFontSize" Value="28"/>
+                <Setter Property="FontIconFontColor" Value="#73384F7D"/>
+                <Setter Property="TitleFontColor" Value="#73384F7D"/>
+                <Setter Property="TitleFontFamily" Value="CircularStd"/>
+                <Setter Property="TitleFontSize" Value="14"/>
+                <Setter Property="SelectionColor" Value="#384F7D"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <tabview:SfTabView TabHeaderPosition="Bottom" DisplayMode="ImageWithText" TabHeight="70" TabHeaderBackgroundColor="White">
+        <tabview:SfTabView.SelectionIndicatorSettings>
+            <tabview:SelectionIndicatorSettings StrokeThickness="0"/>
+        </tabview:SfTabView.SelectionIndicatorSettings>
+        <tabview:SfTabItem Title="Home" IconFont="&#xf02dc;"/>
+        <tabview:SfTabItem Title="My Books" IconFont="&#xf125f;"/>
+        <tabview:SfTabItem Title="Add Review" IconFont="&#xf06a2;"/>
+        <tabview:SfTabItem Title="Notifications" IconFont="&#xf009c;"/>
+    </tabview:SfTabView>
 
 </base:BasePage>
