@@ -10,7 +10,13 @@
             <!--COLORS-->
             <Color x:Key="Primary">#2196F3</Color> 
             
-            <!--STYLES-->
+            <!--GRADIENTS-->
+            <LinearGradientBrush x:Key="PageGradientBackground" EndPoint="1,1">
+                <GradientStop Offset="0" Color="#EEECFF"/>
+                <GradientStop Offset="1" Color="White"/>
+            </LinearGradientBrush>
+
+                <!--STYLES-->
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="CircularStd"/>
             </Style>

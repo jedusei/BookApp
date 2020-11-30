@@ -22,7 +22,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <AbsoluteLayout>
+    <AbsoluteLayout Background="{StaticResource PageGradientBackground}"> 
         <Path Aspect="Fill" StrokeThickness="0" AbsoluteLayout.LayoutBounds="0,0,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional"
             Data="M0 136.5V0H372V136.5C194.782 160.467 124.363 152.191 0 136.5Z">
             <Path.Fill>
