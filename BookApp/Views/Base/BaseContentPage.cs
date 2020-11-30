@@ -1,15 +1,9 @@
 ﻿using BookApp.ViewModels;
-using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace BookApp.Views.Base
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class SingletonPageAttribute : Attribute
-    {
-    }
-
     public abstract class BaseContentPage : ContentPage, IPage
     {
         const int TRANSITION_DURATION = 250;
