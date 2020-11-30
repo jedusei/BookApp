@@ -24,7 +24,7 @@ namespace BookApp.ViewModels
                 if (_currentPage < _pageCount - 1)
                     CurrentPage++;
                 else
-                    await _navigationService.GoToAsync(Routes.Get(Routes.SIGNUP), true);
+                    await _navigationService.GoToAsync(Routes.SIGNUP, true);
             });
         }
     }

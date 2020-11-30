@@ -3,10 +3,9 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="BookApp.Controls.FormEntry"
        x:Name="this"
-       BindingContext="{Reference this}"
        Padding="0"
        CornerRadius="8">
-    <Grid RowSpacing="0">
+    <Grid RowSpacing="0" BindingContext="{Reference this}">
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="3"/>
@@ -16,7 +15,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Entry Text="{Binding Text}" Margin="10,0,0,0" Placeholder="{Binding Placeholder}" >
+        <Entry Keyboard="{Binding Keyboard}" Text="{Binding Text}" Margin="10,0,0,0" Placeholder="{Binding Placeholder}" >
             <Entry.Triggers>
                 <DataTrigger TargetType="Entry" Binding="{Binding IsPasswordVisible}" Value="False">
                     <Setter Property="IsPassword" Value="True"/>

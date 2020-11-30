@@ -18,9 +18,16 @@ namespace BookApp.Services
             return Shell.Current.GoToAsync("..");
         }
 
-        public Task GoToAsync(string route, bool clearHistory = false)
+        public async Task GoToAsync(string route, bool clearHistory = false)
         {
-            return Shell.Current.GoToAsync(route);
+            try
+            {
+                await Shell.Current.GoToAsync(route);
+            }
+            catch
+            {
+                await Shell.Current.GoToAsync($"//{route}");
+            }
         }
     }
 }

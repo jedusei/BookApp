@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Acr.UserDialogs;
 
 namespace BookApp.Droid
 {
@@ -14,6 +15,8 @@ namespace BookApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            UserDialogs.Init(this);
 
             Xamarin.Forms.Forms.SetFlags("Brush_Experimental", "Shapes_Experimental", "CarouselView_Experimental");
 

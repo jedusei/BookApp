@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
              mc:Ignorable="d"
              x:Class="BookApp.Views.SignupPage"
              Shell.NavBarIsVisible="False">
@@ -47,25 +47,35 @@
                                 </LinearGradientBrush>
                             </Ellipse.Fill>
                         </Ellipse>
-                        <Image Source="light" WidthRequest="70" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                        <Image Source="light" WidthRequest="70" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional" TranslationY="-5"/>
                     </AbsoluteLayout>
 
                     <Label Text="Welcome!" TextColor="#384F7D" FontAttributes="Bold" FontSize="32" Margin="0,20,0,5" HorizontalTextAlignment="Center"/>
                     <Label Text="Create your account to get started. After that, you can share books and make friends." TextColor="#CC384F7D" FontSize="16" HorizontalTextAlignment="Center"/>
 
                     <Label Text="Email" Style="{StaticResource FieldLabel}"/>
-                    <controls:FormEntry/>
+                    <controls:FormEntry Text="{Binding Email}" Keyboard="Email" IsValid="{Binding IsEmailValid}"/>
                     <Label Text="Password" Style="{StaticResource FieldLabel}"/>
-                    <controls:FormEntry IsPassword="True"/>
+                    <controls:FormEntry IsPassword="True" Text="{Binding Password}" IsValid="{Binding IsPasswordValid}"/>
                     <Label Text="Confirm Password" Style="{StaticResource FieldLabel}"/>
-                    <controls:FormEntry IsPassword="True" IsValid="False"/>
+                    <controls:FormEntry x:Name="pwdConfirm" IsPassword="True" Text="{Binding PasswordConfirm}" IsValid="{Binding IsPasswordConfirmValid}"/>
 
-                    <Button HorizontalOptions="Center" WidthRequest="300" Text="Sign up" Command="{Binding LoginCommand}" Margin="0,50,0,10"/>
+                    <Button HorizontalOptions="Center" WidthRequest="300" Text="Sign up" Command="{Binding SignupCommand}" Margin="0,50,0,10">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding IsValid}" Value="False">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
                     <Label TextColor="#445984" FontSize="16" HorizontalOptions="Center" Margin="0,20,0,0">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Already have an account? "/>
-                                <Span Text="Login" FontSize="16" FontAttributes="Bold" TextDecorations="Underline"/>
+                                <Span Text="Login" FontSize="16" FontAttributes="Bold" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
