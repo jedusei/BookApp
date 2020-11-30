@@ -25,6 +25,7 @@ namespace BookApp.iOS
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental", "Brush_Experimental", "Shapes_Experimental", "CarouselView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            Syncfusion.SfRating.XForms.iOS.SfRatingRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }
