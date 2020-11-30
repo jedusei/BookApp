@@ -17,14 +17,24 @@ namespace BookApp
     public partial class App : Xamarin.Forms.Application
     {
         static Action _exitAction;
+        public static readonly BindableProperty StatusBarColorProperty = BindableProperty.CreateAttached("StatusBarColor", typeof(Color), typeof(App), Color.White, propertyChanged: OnStatusBarColorChanged);
 
         public static AppStatus Status { get; private set; }
+        public static new IPlatform Platform { get; private set; }
         public static event Action Exit;
+
+        public Color StatusBarColor
+        {
+            get => (Color)GetValue(StatusBarColorProperty);
+            set => SetValue(StatusBarColorProperty, value);
+        }
 
         public App(Action exitAction = null)
         {
             InitializeComponent();
             _exitAction = exitAction ?? Quit;
+
+            Platform = DependencyService.Get<IPlatform>();
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzU5ODk4QDMxMzgyZTMzMmUzMG9BL2xkNGVFZlZjWmo4Y0RFQ0FFMmUxN0ozVlBzQ282blRQZWJGdWdHS2s9");
 
@@ -49,6 +59,11 @@ namespace BookApp
         {
             if (Status != AppStatus.Stopped && _exitAction != null)
                 _exitAction.Invoke();
+        }
+
+        static void OnStatusBarColorChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            Platform.SetStatusBarColor((Color)newValue);
         }
 
         protected override async void OnStart()
