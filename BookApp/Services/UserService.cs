@@ -8,9 +8,16 @@ namespace BookApp.Services
 {
     class UserService : IUserService
     {
-        public Task<bool> LoginAsync(string email, string password)
+        public async Task<bool> LoginAsync(string email, string password)
         {
-            throw new NotImplementedException();
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await Task.Delay(1000);
+                throw new Exception();
+            }
+
+            await Task.Delay(1500);
+            return password == "1234";
         }
 
         public async Task<bool> SignupAsync(string email, string password)

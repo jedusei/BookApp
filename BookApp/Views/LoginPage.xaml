@@ -2,13 +2,77 @@
 <base:BaseContentPage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
              mc:Ignorable="d"
              x:Class="BookApp.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint=".8,.8">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="#F0F4FD" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
+        <AbsoluteLayout>
+            <Ellipse WidthRequest="300" HeightRequest="300" AbsoluteLayout.LayoutBounds="-60,-140" Opacity="0.6">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="1,1">
+                        <GradientStop Color="#606CFF" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse WidthRequest="140" HeightRequest="140" AbsoluteLayout.LayoutBounds="1,110" AbsoluteLayout.LayoutFlags="XProportional" TranslationX="40">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="1,1">
+                        <GradientStop Color="#FEB665" Offset="0"/>
+                        <GradientStop Color="#F66EB4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse WidthRequest="55" HeightRequest="55" AbsoluteLayout.LayoutBounds="0.8,320" AbsoluteLayout.LayoutFlags="XProportional" Opacity="0.65">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                        <GradientStop Color="#2DEEF9" Offset="0"/>
+                        <GradientStop Color="#E084F1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <StackLayout Padding="30,210,30,30" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <Label Text="Sign in" TextColor="#384F7D" FontAttributes="Bold" FontSize="32" Margin="0,20,0,25"/>
+
+                <Label Text="Email" Style="{StaticResource FieldLabel}"/>
+                <controls:FormEntry Text="{Binding Email}" Keyboard="Email" IsValid="{Binding IsEmailValid}"/>
+                <Label Text="Password" Style="{StaticResource FieldLabel}"/>
+                <controls:FormEntry IsPassword="True" Text="{Binding Password}" IsValid="{Binding IsPasswordValid}"/>
+
+                <Button HorizontalOptions="Center" WidthRequest="300" Text="Sign in" Command="{Binding LoginCommand}" Margin="0,50,0,10">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsValid}" Value="False">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Label TextColor="#445984" FontSize="16" HorizontalOptions="Center" Margin="0,20,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="New here? "/>
+                            <Span Text="Create an account" FontSize="16" FontAttributes="Bold" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SignupCommand}"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
+
 </base:BaseContentPage>
