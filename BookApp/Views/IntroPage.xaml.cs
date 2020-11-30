@@ -1,11 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using BookApp.Views.Base;
 
 namespace BookApp.Views
 {
-    public partial class IntroPage : ContentPage
+    public partial class IntroPage : BaseContentPage
     {
         public IntroPage()
         {

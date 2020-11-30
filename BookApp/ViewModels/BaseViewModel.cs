@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
 using Xamarin.Forms;
-
-using BookApp.Models;
 using BookApp.Services;
+using System.Threading.Tasks;
 
 namespace BookApp.ViewModels
 {
@@ -18,6 +16,12 @@ namespace BookApp.ViewModels
         {
             _navigationService = DependencyService.Get<INavigationService>();
         }
+
+        public virtual Task InitializeAsync(object navigationData) => Task.CompletedTask;
+        public virtual void OnStart() { }
+        public virtual void OnResume(object navigationData = null) { }
+        public virtual void OnPause() { }
+        public virtual void OnDestroy() { }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",

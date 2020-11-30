@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using BookApp.Views;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace BookApp.ViewModels
@@ -24,7 +25,7 @@ namespace BookApp.ViewModels
                 if (_currentPage < _pageCount - 1)
                     CurrentPage++;
                 else
-                    await _navigationService.GoToAsync(Routes.SIGNUP, true);
+                    await _navigationService.GoToPageAsync<SignupPage>(clearHistory: true);
             });
         }
     }

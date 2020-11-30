@@ -1,16 +1,13 @@
-﻿using BookApp.ViewModels;
+﻿using BookApp.Views.Base;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace BookApp.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignupPage : ContentPage
+    public partial class SignupPage : BaseContentPage
     {
         public SignupPage()
         {
             InitializeComponent();
-            BindingContext = new SignupViewModel();
         }
     }
 }

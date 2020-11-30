@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BaseContentPage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
-             mc:Ignorable="d"
+                       mc:Ignorable="d"
              x:Class="BookApp.Views.SignupPage"
-             Shell.NavBarIsVisible="False">
+             NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="FieldLabel" TargetType="Label">
@@ -17,6 +18,10 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewmodels:SignupViewModel/>
+    </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -84,4 +89,4 @@
         </AbsoluteLayout>
     </ContentPage.Content>
 
-</ContentPage>
+</base:BaseContentPage>

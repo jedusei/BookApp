@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using Acr.UserDialogs;
+using BookApp.Views;
 
 namespace BookApp.ViewModels
 {
@@ -40,7 +41,7 @@ namespace BookApp.ViewModels
             SignupCommand = new Command(SignupAsync);
             LoginCommand = new Command(async () =>
             {
-                await _navigationService.GoToAsync(Routes.LOGIN);
+                await _navigationService.GoToPageAsync<LoginPage>();
             });
         }
 
