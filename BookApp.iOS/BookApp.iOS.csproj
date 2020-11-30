@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Platform.cs" />
     <Compile Include="Renderers\EntryRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
@@ -175,5 +176,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\star_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bookmark_add.png" />
   </ItemGroup>
 </Project>

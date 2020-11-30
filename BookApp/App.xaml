@@ -19,6 +19,9 @@
                 <!--STYLES-->
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="CircularStd"/>
+            </Style>   
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="CircularStd"/>
             </Style>
 
             <Style x:Key="FieldLabel" TargetType="Label">
