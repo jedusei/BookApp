@@ -24,6 +24,9 @@
     <Compile Update="Views\IntroPage.xaml.cs">
       <DependentUpon>IntroPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SignupPage.xaml.cs">
       <DependentUpon>SignupPage.xaml</DependentUpon>
     </Compile>
@@ -34,6 +37,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Base\SamplePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
