@@ -7,7 +7,7 @@
              mc:Ignorable="d">
 
     <ContentView.BindingContext>
-        <viewmodels:BookListViewModel/>
+        <viewmodels:BookListViewModel x:Name="viewModel"/>
     </ContentView.BindingContext>
 
     <ContentView.Content>
@@ -18,7 +18,7 @@
             <Label Text="Books reviewed by you" TextColor="#384F7D" FontSize="20" Padding="20,20,0,5">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Books.Length, FallbackValue=0}" Value="0">
-                        <Setter Property="IsVisible" Value="False"/>
+                        <Setter Property="Opacity" Value="0"/>
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
@@ -39,7 +39,7 @@
                         </x:Array>
                     </d:CollectionView.ItemsSource>
                     <CollectionView.EmptyView>
-                        <StackLayout TranslationY="-10">
+                        <StackLayout TranslationY="-30">
                             <Image Source="bookmark_add" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
                             <Label Text="You have no books as of yet. Just add your first book review to get started."  VerticalOptions="StartAndExpand"
                                        HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
@@ -85,7 +85,7 @@
                     </CollectionView.Footer>
                 </CollectionView>
                 <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   TranslationY="-30" IsRunning="True" IsVisible="False">
+                                   TranslationY="-50" IsRunning="True" IsVisible="False">
                     <ActivityIndicator.Triggers>
                         <DataTrigger TargetType="ActivityIndicator" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loading}">
                             <Setter Property="IsVisible" Value="True"/>

@@ -1,6 +1,5 @@
 ﻿using BookApp.Models;
 using BookApp.Services;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace BookApp.ViewModels
@@ -26,10 +25,9 @@ namespace BookApp.ViewModels
         public BookListViewModel()
         {
             _bookService = DependencyService.Get<IBookService>();
-            _ = InitializeAsync();
         }
 
-        public override async Task InitializeAsync(object navigationData = null)
+        public override async void OnStart()
         {
             LoadStatus = LoadStatus.Loading;
             Books = await _bookService.GetReviewedBooksAsync();

@@ -33,7 +33,7 @@ namespace BookApp.Services
                     Title = "The Dark Tower: The Gunslinger",
                     Author = "Stephen King",
                     CoverImageUrl = "http://3.bp.blogspot.com/-ASeA6F81WTY/UTeQmRhyaNI/AAAAAAAAAUU/VDzSPwV99o4/s1600/the-dark-tower-gunslinger-bk-i-9781444723441.jpg",
-                    Rating = 5
+                    Rating = 4.5f
                 },
                 new Book
                 {
@@ -47,7 +47,7 @@ namespace BookApp.Services
                     Title = "Sideways Arithmetic From Wayside School",
                     Author = "Louis Sachar",
                     CoverImageUrl = "https://th.bing.com/th/id/OIP.qviz9HsX4Igzz0d-SHqqpAHaKv?pid=Api&w=124&h=180&c=7",
-                    Rating = 5
+                    Rating = 4.5f
                 }
             };
         }
@@ -61,7 +61,7 @@ namespace BookApp.Services
         {
            if (_books == null)
             {
-                await Task.Delay(1000);
+                await Task.Delay(1500);
                 Initialize();
             }
             return _books;
