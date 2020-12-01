@@ -92,7 +92,7 @@
                         </DataTrigger>
                     </ActivityIndicator.Triggers>
                 </ActivityIndicator>
-                <Button AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional"
+                <Button AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" Command="{Binding AddReviewCommand}"
                     Text="Add Book Review" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="0,20"/>
             </AbsoluteLayout>
         </StackLayout>

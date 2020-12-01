@@ -1,5 +1,7 @@
 ﻿using BookApp.Models;
 using BookApp.Services;
+using BookApp.Views;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace BookApp.ViewModels
@@ -15,17 +17,19 @@ namespace BookApp.ViewModels
             get => _loadStatus;
             private set => SetProperty(ref _loadStatus, value);
         }
-
         public Book[] Books
         {
             get => _books;
             set => SetProperty(ref _books, value);
         }
+        public ICommand AddReviewCommand { get; private set; }
 
         public BookListViewModel()
         {
             if (!DesignMode.IsDesignModeEnabled)
                 _bookService = DependencyService.Get<IBookService>();
+
+            AddReviewCommand = new Command(async () => await _navigationService.GoToPageAsync<AddReviewPage>());
         }
 
         public override async void OnStart()
