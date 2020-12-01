@@ -1,4 +1,5 @@
-﻿using BookApp.Views.Base;
+﻿using BookApp.Models;
+using BookApp.Views.Base;
 
 namespace BookApp.Views
 {
@@ -7,6 +8,11 @@ namespace BookApp.Views
         public AddReviewPage()
         {
             InitializeComponent();
+        }
+
+        private void CollectionView_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectBookCommand.Execute(e.CurrentSelection[0] as Book);
         }
     }
 }

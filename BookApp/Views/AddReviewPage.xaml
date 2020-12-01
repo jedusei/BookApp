@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookApp.Views.AddReviewPage"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
-                mc:Ignorable="d">
-    
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:views="clr-namespace:BookApp.Views"
+                mc:Ignorable="d"
+             x:Name="this">
+
     <ContentPage.Resources>
         <Style TargetType="Label">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -32,9 +33,9 @@
     </ContentPage.Resources>
 
     <ContentPage.BindingContext>
-        <viewmodels:AddReviewViewModel/>
+        <viewmodels:AddReviewViewModel x:Name="viewModel"/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <AbsoluteLayout Background="{StaticResource PageGradientBackground}">
             <Path Aspect="Fill" StrokeThickness="0" AbsoluteLayout.LayoutBounds="0,0,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional"
@@ -46,45 +47,43 @@
                     </LinearGradientBrush>
                 </Path.Fill>
             </Path>
-            <Label Text="Add Review" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
-            <Frame WidthRequest="315" Padding="0" CornerRadius="10" AbsoluteLayout.LayoutBounds="0.5,125" AbsoluteLayout.LayoutFlags="XProportional">
-                <StackLayout Spacing="0">
-                    <controls:SearchEntry Text="{Binding SearchText}" HorizontalOptions="FillAndExpand" CornerRadius="0" HasShadow="False"
-                                      Placeholder="What's the book's name?" Icon="search"/>
 
-                    <BoxView x:Name="ListTopBorder" HeightRequest="1" Color="#1A384F7D">
-                        <BoxView.Triggers>
-                            <DataTrigger TargetType="BoxView" Binding="{Binding SearchResults.Length, FallbackValue=0}" Value="0">
-                                <Setter Property="IsVisible" Value="False"/>
-                            </DataTrigger>
-                        </BoxView.Triggers>
-                    </BoxView>
-                    <CollectionView ItemsSource="{Binding SearchResults}" HeightRequest="{Binding ResultsListHeight}" SelectionMode="Single">
-                        <CollectionView.Triggers>
-                            <DataTrigger TargetType="CollectionView" Binding="{Binding SearchResults.Length, FallbackValue=0}" Value="0">
-                                <Setter Property="IsVisible" Value="False"/>
-                            </DataTrigger>
-                        </CollectionView.Triggers>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Label Text="{Binding Title}" TextColor="#384F7D" FontSize="18" MaxLines="1" LineBreakMode="TailTruncation"
-                                       Padding="20,0" HeightRequest="50" VerticalTextAlignment="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Author}" FontSize="18" FontAttributes="Bold"/>
-                                            <Span Text=" "/>
-                                            <Span Text="{Binding Title}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>                
-            </Frame>
-                    
-            <Button Text="Next" WidthRequest="300" HorizontalOptions="Center"
-                    AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" VerticalOptions="End" Margin="0,30"/>            
+            <ContentView Padding="20" AbsoluteLayout.LayoutBounds="0,55">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </ContentView.GestureRecognizers>
+
+                <Image Source="arrow_left" HeightRequest="20"/>
+            </ContentView>
+
+            <Label Text="Add Review" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
+
+            <CarouselView Position="{Binding CurrentPage, Mode=OneWay}" IsSwipeEnabled="False" AbsoluteLayout.LayoutBounds="0.5,125" AbsoluteLayout.LayoutFlags="XProportional">
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type x:Object}">
+                        <views:AddReviewSubpage1/>
+                        <views:AddReviewSubpage2/>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Content="{Binding}"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <Button Text="Next" WidthRequest="300" HorizontalOptions="Center" Command="{Binding NextCommand}"
+                    AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" VerticalOptions="End" Margin="0,30">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding CurrentPage}" Value="0">
+                        <Setter Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Button" Binding="{Binding Rating}" Value="-1">
+                        <Setter Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </base:BasePage>

@@ -183,4 +183,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\bookmark_add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_left.png" />
+  </ItemGroup>
 </Project>

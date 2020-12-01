@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              x:Class="BookApp.App">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
@@ -8,7 +8,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <!--COLORS-->
-            <Color x:Key="Primary">#2196F3</Color> 
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="TextColor">#384F7D</Color> 
             
             <!--GRADIENTS-->
             <LinearGradientBrush x:Key="PageGradientBackground" EndPoint="1,1">
@@ -19,6 +20,8 @@
                 <!--STYLES-->
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="CircularStd"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="LineBreakMode" Value="TailTruncation"/>
             </Style>   
             <Style TargetType="Entry">
                 <Setter Property="FontFamily" Value="CircularStd"/>
@@ -66,6 +69,16 @@
                             </VisualState>
                         </VisualStateGroup>
                     </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="xforms:SfRating">
+                <Setter Property="Precision" Value="Half"/>
+                <Setter Property="ItemSize" Value="16"/>
+                <Setter Property="RatingSettings">
+                    <Setter.Value>
+                        <xforms:SfRatingSettings RatedFill="#FFD381" UnRatedFill="#40384F7D" RatedStrokeWidth="0" UnRatedStrokeWidth="0"/>
+                    </Setter.Value>
                 </Setter>
             </Style>
         </ResourceDictionary>        
