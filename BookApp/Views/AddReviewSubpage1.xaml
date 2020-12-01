@@ -2,6 +2,31 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
              x:Class="BookApp.Views.AddReviewSubpage1">
+    <ContentView.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White"/>
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="1,0">
+                                            <GradientStop Offset="0" Color="#596C92"/>
+                                            <GradientStop Offset="1" Color="#445984"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentView.Resources>
+    
     <ContentView.Content>
         <Frame VerticalOptions="Start" BindingContext="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type viewmodels:AddReviewViewModel}}}" WidthRequest="315" Padding="0" CornerRadius="10" HorizontalOptions="Center">
             <StackLayout Spacing="0">
@@ -15,8 +40,8 @@
                         </DataTrigger>
                     </BoxView.Triggers>
                 </BoxView>
-                <CollectionView ItemsSource="{Binding SearchResults}" HeightRequest="{Binding ResultsListHeight}"
-                                                SelectionMode="Single" SelectionChangedCommand="{Binding SelectBookCommand}" SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}" >
+                <CollectionView ItemsSource="{Binding SearchResults}" HeightRequest="{Binding ResultsListHeight}" SelectionMode="Single"
+                                                 SelectionChangedCommand="{Binding SelectBookCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}}" >
                     <CollectionView.Triggers>
                         <DataTrigger TargetType="CollectionView" Binding="{Binding SearchResults.Length, FallbackValue=0}" Value="0">
                             <Setter Property="IsVisible" Value="False"/>

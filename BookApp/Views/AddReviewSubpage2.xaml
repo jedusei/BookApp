@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"  xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="BookApp.Views.AddReviewSubpage2">
   <ContentView.Content>
         <StackLayout Padding="20,0,20,20" VerticalOptions="Start" BindingContext="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type viewmodels:AddReviewViewModel}}}">
@@ -10,34 +10,30 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Frame HasShadow="False"  VerticalOptions="Center" Grid.RowSpan="4" Padding="0" CornerRadius="10">
-                    <Image WidthRequest="130" Source="{Binding SelectedBook.CoverImageUrl}"/>
+                <Frame VerticalOptions="Center" Padding="0" CornerRadius="10">
+                    <ffimageloading:CachedImage x:Name="image" WidthRequest="130" HeightRequest="200" Source="{Binding SelectedBook.CoverImageUrl}" Success="CachedImage_Success" />
                 </Frame>
 
-                <StackLayout Grid.Column="1" VerticalOptions="End">
+                <StackLayout Spacing="0" Grid.Column="1" VerticalOptions="Center">
                     <Label Text="{Binding SelectedBook.Title}" FontSize="25" MaxLines="2" LineBreakMode="TailTruncation"/>
+                    <Label Text="{Binding SelectedBook.Author}" FontSize="20" 
+                                           Opacity="0.8" MaxLines="1" LineBreakMode="TailTruncation"/>
+
+                    <Label FontSize="14" FontAttributes="Bold" Margin="0,15,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="&#xf04ce;" FontFamily="MaterialIcons"/>
+                                <Span Text="{Binding SelectedBook.Rating, StringFormat=' {0:F2}'}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Text="{Binding SelectedBook.ReviewCount, StringFormat='{0:N0} reviews'}" Opacity="0.8"/>
                 </StackLayout>
 
-                <Label Grid.Column="1" Grid.Row="1" Text="{Binding SelectedBook.Author}" FontSize="20" 
-                                       Opacity="0.8" MaxLines="1" LineBreakMode="TailTruncation"/>
-
-                <Label FontSize="14" Grid.Column="1" Grid.Row="2" 
-                                       FontAttributes="Bold" Margin="0,20,0,0">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="&#xf04ce;" FontFamily="MaterialIcons"/>
-                            <Span Text="{Binding SelectedBook.Rating, StringFormat=' {0:F2}'}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-
-                <Label Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBook.ReviewCount, StringFormat='{0:N0} reviews'}" Opacity="0.8"/>
             </Grid>
 
             <Label Text="{Binding SelectedBook.Description}" FontSize="16" MaxLines="5"
@@ -52,7 +48,7 @@
             <BoxView Color="#384F7D" Opacity="0.1" HeightRequest="1" Margin="0,30"/>
 
             <Label HorizontalOptions="Center" Text="Tap to add rating" TextTransform="Uppercase"/>
-            <xforms:SfRating Precision="Half" Value="{Binding Rating}" ItemSize="18" HorizontalOptions="Center" Margin="0,20">
+            <xforms:SfRating Precision="Half" Value="{Binding Rating, Mode=TwoWay}" ItemSize="18" HorizontalOptions="Center" Margin="0,5">
                 <xforms:SfRating.RatingSettings>
                     <xforms:SfRatingSettings RatedFill="#FFD381" UnRatedFill="#40384F7D" RatedStrokeWidth="0" UnRatedStrokeWidth="0"/>
                 </xforms:SfRating.RatingSettings>

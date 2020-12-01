@@ -16,5 +16,10 @@ namespace BookApp.Views
         {
             InitializeComponent();
         }
+
+        private void CachedImage_Success(object sender, FFImageLoading.Forms.CachedImageEvents.SuccessEventArgs e)
+        {
+            image.HeightRequest = e.ImageInformation.OriginalHeight * image.WidthRequest / e.ImageInformation.OriginalWidth;
+        }
     }
 }

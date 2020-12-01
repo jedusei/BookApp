@@ -15,7 +15,7 @@ namespace BookApp.ViewModels
         IBookService _bookService;
         Book[] _searchResults;
         string _searchText;
-        int _currentPage = 1;
+        int _currentPage;
         Book _selectedBook;
         float _rating = -1;
 
@@ -37,7 +37,7 @@ namespace BookApp.ViewModels
         public int CurrentPage
         {
             get => _currentPage;
-            private set => SetProperty(ref _currentPage, value);
+            private set => SetProperty(ref _currentPage, value, onChanged: (NextCommand as Command).ChangeCanExecute);
         }
         public Book SelectedBook
         {
@@ -47,7 +47,7 @@ namespace BookApp.ViewModels
         public float Rating
         {
             get => _rating;
-            set => SetProperty(ref _rating, value);
+            set => SetProperty(ref _rating, value, onChanged: (NextCommand as Command).ChangeCanExecute);
         }
         public ICommand NextCommand { get; private set; }
         public ICommand BackCommand { get; private set; }
@@ -59,21 +59,10 @@ namespace BookApp.ViewModels
             if (!DesignMode.IsDesignModeEnabled)
                 _bookService = DependencyService.Get<IBookService>();
 
-            SelectBookCommand = new Command<Book>(SelectBook);
-            NextCommand = new Command(Next);
+            SelectBookCommand = new Command<CollectionView>(SelectBook);
+            NextCommand = new Command(Next, () => _currentPage == 1 && _rating >= 0);
             BackCommand = new Command(GoBack);
             OpenWebLinkCommand = new Command(OpenWebLink);
-
-            SelectedBook = new Book
-            {
-                Title = "Pet Sematary",
-                Author = "Stephen King",
-                Description = "The road in front of Dr. Louis Creed's rural Maine home frequently claims the lives of neighborhood pets. Louis has recently moved from Chicago to Ludlow with his wife Rachel, their children and pet cat. Near their house, local children have created a cemetery for the dogs and cats killed by the steady stream of transports on the busy highway. Deeper in the woods lies another graveyard, an ancient Indian burial ground whose sinister properties Louis discovers when the family cat is killed.",
-                CoverImageUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1477286232l/32733787.jpg",// "https://i1.wp.com/dajjeh.com/wp-content/uploads/2018/07/pet-sematary-565x1024.jpg?fit=565%2C1024&ssl=1",
-                Rating = 4.68f,
-                ReviewCount = 2464,
-                WebUrl = "https://stephenking.com/works/novel/pet-sematary.html"
-            };
         }
 
         async void OnSearchTextChanged()
@@ -88,10 +77,14 @@ namespace BookApp.ViewModels
             }
         }
 
-        void SelectBook(Book book)
+        void SelectBook(CollectionView collectionView)
         {
-            SelectedBook = book;
-            NextCommand.Execute(null);
+            if (collectionView.SelectedItem != null)
+            {
+                SelectedBook = collectionView.SelectedItem as Book;
+                collectionView.SelectedItem = null;
+                NextCommand.Execute(null);
+            }
         }
 
         async void OpenWebLink()
@@ -109,6 +102,7 @@ namespace BookApp.ViewModels
             {
                 CurrentPage = 1;
                 SearchText = string.Empty;
+                Rating = -1;
             }
         }
 

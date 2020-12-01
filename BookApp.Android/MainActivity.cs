@@ -20,6 +20,7 @@ namespace BookApp.Droid
 
             Platform.Init(this);
             UserDialogs.Init(this);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
 
             Xamarin.Forms.Forms.SetFlags("Brush_Experimental", "Shapes_Experimental", "CarouselView_Experimental");
 

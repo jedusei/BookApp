@@ -26,6 +26,7 @@ namespace BookApp.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             Syncfusion.SfRating.XForms.iOS.SfRatingRenderer.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

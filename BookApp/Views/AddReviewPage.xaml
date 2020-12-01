@@ -4,34 +4,8 @@
              x:Class="BookApp.Views.AddReviewPage"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:views="clr-namespace:BookApp.Views"
-                mc:Ignorable="d"
-             x:Name="this">
-
-    <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="TextColor" Value="White"/>
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush EndPoint="1,0">
-                                            <GradientStop Offset="0" Color="#596C92"/>
-                                            <GradientStop Offset="1" Color="#445984"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-    </ContentPage.Resources>
-
+             mc:Ignorable="d"
+             x:Name="this"> 
     <ContentPage.BindingContext>
         <viewmodels:AddReviewViewModel x:Name="viewModel"/>
     </ContentPage.BindingContext>
@@ -56,9 +30,9 @@
                 <Image Source="arrow_left" HeightRequest="20"/>
             </ContentView>
 
-            <Label Text="Add Review" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
+            <Label Text="Add Book Review" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
 
-            <CarouselView Position="{Binding CurrentPage, Mode=OneWay}" IsSwipeEnabled="False" AbsoluteLayout.LayoutBounds="0.5,125" AbsoluteLayout.LayoutFlags="XProportional">
+            <CarouselView x:Name="carouselView" Position="{Binding CurrentPage, Mode=OneWay}" IsSwipeEnabled="False" AbsoluteLayout.LayoutBounds="0.5,125" AbsoluteLayout.LayoutFlags="XProportional">
                 <CarouselView.ItemsSource>
                     <x:Array Type="{x:Type x:Object}">
                         <views:AddReviewSubpage1/>
@@ -73,16 +47,7 @@
             </CarouselView>
 
             <Button Text="Next" WidthRequest="300" HorizontalOptions="Center" Command="{Binding NextCommand}"
-                    AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" VerticalOptions="End" Margin="0,30">
-                <Button.Triggers>
-                    <DataTrigger TargetType="Button" Binding="{Binding CurrentPage}" Value="0">
-                        <Setter Property="IsEnabled" Value="False"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="Button" Binding="{Binding Rating}" Value="-1">
-                        <Setter Property="IsEnabled" Value="False"/>
-                    </DataTrigger>
-                </Button.Triggers>
-            </Button>
+                    AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" VerticalOptions="End" Margin="0,30"/>
 
         </AbsoluteLayout>
     </ContentPage.Content>

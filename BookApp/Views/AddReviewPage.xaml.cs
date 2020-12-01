@@ -10,9 +10,10 @@ namespace BookApp.Views
             InitializeComponent();
         }
 
-        private void CollectionView_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        protected override bool OnBackButtonPressed()
         {
-            viewModel.SelectBookCommand.Execute(e.CurrentSelection[0] as Book);
+            viewModel.BackCommand.Execute(null);
+            return true;
         }
     }
 }
