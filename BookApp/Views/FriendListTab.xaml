@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookApp.Views.FriendListTab"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="clr-namespace:BookApp.Models"
+             mc:Ignorable="d">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <CollectionView IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <CollectionView.Triggers>
+                    <DataTrigger TargetType="CollectionView" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
+                        <Setter Property="IsVisible" Value="True"/>
+                    </DataTrigger>
+                </CollectionView.Triggers>
+                <d:CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String></x:String>
+                        <x:String></x:String>
+                        <x:String></x:String>
+                    </x:Array>
+                </d:CollectionView.ItemsSource>
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Image Source="sad_face" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
+                        <Label Text="You have friends as of yet. Just add your first friends to get started."  VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"
+                                       HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="20,10">
+
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <BoxView Color="Transparent" HeightRequest="80"/>
+                </CollectionView.Footer>
+            </CollectionView>
+            <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   TranslationY="-0" IsRunning="True" IsVisible="False">
+                <ActivityIndicator.Triggers>
+                    <DataTrigger TargetType="ActivityIndicator" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loading}">
+                        <Setter Property="IsVisible" Value="True"/>
+                    </DataTrigger>
+                </ActivityIndicator.Triggers>
+            </ActivityIndicator>
+            <Button AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" Command="{Binding AddFriendsCommand}"
+                    Text="Add Friends" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="0,20"/>
+        </AbsoluteLayout>
+
+    </ContentView.Content>
+</ContentView>

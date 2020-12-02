@@ -61,7 +61,7 @@
                 </tabview:SfTabItem>
                 <tabview:SfTabItem Title="Friends" IconFont="&#xf000e;">
                     <tabview:SfTabItem.Content>
-                        <BoxView/>
+                        <views:FriendListTab/>
                     </tabview:SfTabItem.Content>
                 </tabview:SfTabItem>
                 <tabview:SfTabItem Title="Notifications" IconFont="&#xf009c;">

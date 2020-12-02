@@ -189,4 +189,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\check.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sad_face.svg" />
+  </ItemGroup>
 </Project>
