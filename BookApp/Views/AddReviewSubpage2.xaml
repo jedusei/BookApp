@@ -36,7 +36,7 @@
 
             </Grid>
 
-            <Label Text="{Binding SelectedBook.Description}" FontSize="16" MaxLines="5"
+            <Label Text="{Binding SelectedBook.Description}" FontSize="16" MaxLines="5" LineBreakMode="TailTruncation"
                                    Opacity="0.8" Margin="0,20" LineHeight="1.5"/>
 
             <Label Text="Full Synopsis" FontSize="16" FontAttributes="Bold" TextDecorations="Underline">

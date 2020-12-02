@@ -1,6 +1,7 @@
 ﻿using BookApp.Models;
 using BookApp.Services;
 using BookApp.Views;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -10,14 +11,14 @@ namespace BookApp.ViewModels
     {
         IBookService _bookService;
         LoadStatus _loadStatus;
-        Book[] _books;
+        ObservableCollection<Book> _books;
 
         public LoadStatus LoadStatus
         {
             get => _loadStatus;
             private set => SetProperty(ref _loadStatus, value);
         }
-        public Book[] Books
+        public ObservableCollection<Book> Books
         {
             get => _books;
             set => SetProperty(ref _books, value);

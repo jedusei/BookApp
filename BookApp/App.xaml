@@ -21,7 +21,6 @@
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="CircularStd"/>
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
-                <Setter Property="LineBreakMode" Value="TailTruncation"/>
             </Style>   
             <Style TargetType="Entry">
                 <Setter Property="FontFamily" Value="CircularStd"/>

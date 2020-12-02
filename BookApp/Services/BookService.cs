@@ -1,5 +1,6 @@
 ﻿using BookApp.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -73,6 +74,9 @@ namespace BookApp.Services
             }
         };
 
+        ObservableCollection<Book> _reviewedBooks = new ObservableCollection<Book>();
+
+
         public Task<Book[]> FindBooksAsync(string query)
         {
             query = query.ToLower();
@@ -86,15 +90,17 @@ namespace BookApp.Services
             return Task.FromResult(results.ToArray());
         }
 
-        public async Task<Book[]> GetReviewedBooksAsync()
+        public async Task<ObservableCollection<Book>> GetReviewedBooksAsync()
         {
             await Task.Delay(1500);
-            return _books[0..4];
+            return _reviewedBooks;
         }
 
-        public Task ReviewBookAsync(Book book, string review)
+        public async Task ReviewBookAsync(Book book, float rating)
         {
-            throw new NotImplementedException();
+            await Task.Delay(1500);
+            book.Rating = rating;
+            _reviewedBooks.Add(book);
         }
 
         static int GetDamerauLevenshteinDistance(string s, string t)

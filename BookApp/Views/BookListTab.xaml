@@ -3,13 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
              x:Class="BookApp.Views.BookListTab"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:models="clr-namespace:BookApp.Models"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:models="clr-namespace:BookApp.Models" xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d">
-
-    <ContentView.BindingContext>
-        <viewmodels:BookListViewModel x:Name="viewModel"/>
-    </ContentView.BindingContext>
-
     <ContentView.Content>
         <StackLayout Orientation="Vertical">
             <controls:SearchEntry WidthRequest="315" VerticalOptions="Start" HeightRequest="70" HorizontalOptions="Center" 
@@ -17,7 +12,7 @@
 
             <Label Text="Books reviewed by you" TextColor="#384F7D" FontSize="20" Padding="20,20,0,5">
                 <Label.Triggers>
-                    <DataTrigger TargetType="Label" Binding="{Binding Books.Length, FallbackValue=0}" Value="0">
+                    <DataTrigger TargetType="Label" Binding="{Binding Books.Count, FallbackValue=0}" Value="0">
                         <Setter Property="Opacity" Value="0"/>
                     </DataTrigger>
                 </Label.Triggers>
@@ -41,7 +36,7 @@
                     <CollectionView.EmptyView>
                         <StackLayout TranslationY="-30">
                             <Image Source="bookmark_add" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
-                            <Label Text="You have no books as of yet. Just add your first book review to get started."  VerticalOptions="StartAndExpand"
+                            <Label Text="You have no books as of yet. Just add your first book review to get started."  VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"
                                        HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
                         </StackLayout>
                     </CollectionView.EmptyView>
@@ -60,7 +55,7 @@
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Image Grid.RowSpan="3" Source="{Binding CoverImageUrl}" d:Background="Red" HeightRequest="150"/>
+                                        <ffimage:CachedImage Grid.RowSpan="3" Source="{Binding CoverImageUrl}" HeightRequest="150"/>
 
                                         <StackLayout Grid.Column="1">
                                             <Label Text="{Binding Title}" d:Text="Title" LineBreakMode="TailTruncation" MaxLines="2" TextColor="#384F7D" FontSize="22" FontAttributes="Bold"/>

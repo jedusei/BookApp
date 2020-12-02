@@ -1,4 +1,5 @@
-﻿using BookApp.Models;
+﻿using Acr.UserDialogs;
+using BookApp.Models;
 using BookApp.Services;
 using System;
 using System.Windows.Input;
@@ -96,13 +97,20 @@ namespace BookApp.ViewModels
             catch { }
         }
 
-        void Next()
+       async void Next()
         {
             if (_currentPage == 0)
             {
                 CurrentPage = 1;
                 SearchText = string.Empty;
                 Rating = -1;
+            }
+            else
+            {
+                UserDialogs.Instance.ShowLoading("Please wait...");
+                await _bookService.ReviewBookAsync(_selectedBook, _rating);
+                UserDialogs.Instance.HideLoading();
+                await _navigationService.GoBackAsync();
             }
         }
 
