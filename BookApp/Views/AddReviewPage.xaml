@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BookApp.Views.AddReviewPage"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:views="clr-namespace:BookApp.Views"
-             mc:Ignorable="d"
-             x:Name="this"> 
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="BookApp.Views.AddReviewPage"
+                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+                xmlns:viewmodels="clr-namespace:BookApp.ViewModels" 
+                xmlns:views="clr-namespace:BookApp.Views"
+                mc:Ignorable="d"
+                x:Name="this"> 
     <ContentPage.BindingContext>
         <viewmodels:AddReviewViewModel x:Name="viewModel"/>
     </ContentPage.BindingContext>
@@ -22,13 +25,13 @@
                 </Path.Fill>
             </Path>
 
-            <ContentView Padding="20" AbsoluteLayout.LayoutBounds="0,55">
+            <syncEffectsView:SfEffectsView Padding="10" CornerRadius="50" AbsoluteLayout.LayoutBounds="10,62">
                 <ContentView.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </ContentView.GestureRecognizers>
 
-                <Image Source="arrow_left" HeightRequest="20"/>
-            </ContentView>
+                <Image Source="arrow_left" WidthRequest="25" HeightRequest="25"/>
+            </syncEffectsView:SfEffectsView>
 
             <Label Text="Add Book Review" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
 
