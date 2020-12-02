@@ -1,26 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              x:Class="BookApp.Views.FriendListTab"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="clr-namespace:BookApp.Models"
              mc:Ignorable="d">
     <ContentView.Content>
         <AbsoluteLayout>
-            <CollectionView IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
+            <CollectionView Margin="0,40,0,0" IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
                                 AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <CollectionView.Header>
+                    <StackLayout Spacing="10" Padding="0,40,0,0">
+                        <Label Text="Recently Added" FontSize="14" TextTransform="Uppercase" FontAttributes="Bold" Margin="30,0,0,0"/>
+                        <CollectionView ItemsSource="{Binding Friends}" HeightRequest="80">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.Header>
+                                <BoxView WidthRequest="30"/>
+                            </CollectionView.Header>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame HasShadow="False" Padding="0" WidthRequest="80" HeightRequest="80" CornerRadius="40">
+                                        <syncEffectsView:SfEffectsView>
+                                            <Image Source="{Binding ProfileImageUrl}"/>
+                                        </syncEffectsView:SfEffectsView>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.Footer>
+                                <BoxView WidthRequest="30"/>
+                            </CollectionView.Footer>
+                        </CollectionView>
+                        <Label Text="Chat" TextTransform="Uppercase" FontAttributes="Bold" Background="White" Padding="30,30,0,10" Margin="0,20,0,0"/>
+                    </StackLayout>
+                </CollectionView.Header>
                 <CollectionView.Triggers>
                     <DataTrigger TargetType="CollectionView" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
                         <Setter Property="IsVisible" Value="True"/>
                     </DataTrigger>
                 </CollectionView.Triggers>
-                <d:CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String></x:String>
-                        <x:String></x:String>
-                        <x:String></x:String>
-                    </x:Array>
-                </d:CollectionView.ItemsSource>
                 <CollectionView.EmptyView>
                     <StackLayout>
                         <Image Source="sad_face" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
@@ -30,9 +50,27 @@
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ContentView Padding="20,10">
+                        <syncEffectsView:SfEffectsView HeightRequest="100" Padding="30,10" BackgroundColor="White">
+                            <Grid ColumnSpacing="20"> 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                        </ContentView>
+                                <Frame HasShadow="False" Padding="0" HeightRequest="50" CornerRadius="25" Grid.RowSpan="2" VerticalOptions="Start">
+                                    <Image Source="{Binding ProfileImageUrl}"/>
+                                </Frame>
+
+                                <Label Text="{Binding Name}" Grid.Column="1" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Messages[0].DateCreated, StringFormat='{0: h:mm tt}'}" Grid.Column="2" Opacity="0.6"/>
+                                <Label Text="{Binding Messages[0].Content}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" MaxLines="3" LineBreakMode="TailTruncation" Opacity="0.8"/>
+                            </Grid>
+                        </syncEffectsView:SfEffectsView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.Footer>

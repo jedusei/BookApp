@@ -49,7 +49,7 @@
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
-            <tabview:SfTabView x:Name="tabView" VerticalOptions="FillAndExpand"  SelectionChanged="tabView_SelectionChanged" VisibleHeaderCount="4"
+            <tabview:SfTabView x:Name="tabView" VerticalOptions="FillAndExpand"  SelectionChanged="tabView_SelectionChanged" VisibleHeaderCount="4" EnableSwiping="False"
                                TabHeaderPosition="Bottom" DisplayMode="ImageWithText" TabHeight="70" TabHeaderBackgroundColor="White">
                 <tabview:SfTabView.SelectionIndicatorSettings>
                     <tabview:SelectionIndicatorSettings StrokeThickness="0"/>
