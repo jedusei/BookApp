@@ -69,5 +69,16 @@ namespace BookApp.Views
 
             _previousIndex = currentIndex;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (tabView.SelectedIndex != 0)
+            {
+                tabView.SelectedIndex = 0;
+                return true;
+            }
+
+            return base.OnBackButtonPressed();
+        }
     }
 }
