@@ -39,7 +39,7 @@
                         <Setter Property="Text" Value="My Book List"/>
                     </DataTrigger>
                     <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="1">
-                        <Setter Property="Text" Value="Friends"/>
+                        <Setter Property="Text" Value="My Friends"/>
                     </DataTrigger>
                     <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="2">
                         <Setter Property="Text" Value="Notifications"/>
