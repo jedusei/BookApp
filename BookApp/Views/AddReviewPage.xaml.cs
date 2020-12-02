@@ -1,10 +1,14 @@
-﻿using BookApp.Models;
-using BookApp.Views.Base;
+﻿using BookApp.Views.Base;
 
 namespace BookApp.Views
 {
     public partial class AddReviewPage : BasePage
     {
+        public class Args
+        {
+            public bool IsFirstReview { get; set; }
+        }
+
         public AddReviewPage()
         {
             InitializeComponent();

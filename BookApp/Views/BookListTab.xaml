@@ -10,7 +10,7 @@
             <controls:SearchEntry WidthRequest="315" VerticalOptions="Start" HeightRequest="70" HorizontalOptions="Center" 
                                   Placeholder="Search for book" Icon="search"/>
 
-            <Label Text="Books reviewed by you" TextColor="#384F7D" FontSize="20" Padding="20,20,0,5">
+            <Label Text="Books reviewed by you" TextColor="#384F7D" FontSize="20" Padding="20,20,0,5" TextTransform="Uppercase">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Books.Count, FallbackValue=0}" Value="0">
                         <Setter Property="Opacity" Value="0"/>

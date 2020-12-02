@@ -1,7 +1,9 @@
 ﻿using Acr.UserDialogs;
 using BookApp.Models;
 using BookApp.Services;
+using BookApp.Views;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -19,6 +21,7 @@ namespace BookApp.ViewModels
         int _currentPage;
         Book _selectedBook;
         float _rating = -1;
+        bool _isFirstReview;
 
         public string SearchText
         {
@@ -66,6 +69,15 @@ namespace BookApp.ViewModels
             OpenWebLinkCommand = new Command(OpenWebLink);
         }
 
+        public override Task InitializeAsync(object navigationData)
+        {
+            var args = navigationData as AddReviewPage.Args;
+            if (args != null)
+                _isFirstReview = args.IsFirstReview;
+
+            return Task.CompletedTask;
+        }
+
         async void OnSearchTextChanged()
         {
             string query = _searchText.Trim();
@@ -97,7 +109,7 @@ namespace BookApp.ViewModels
             catch { }
         }
 
-       async void Next()
+        async void Next()
         {
             if (_currentPage == 0)
             {
@@ -110,7 +122,10 @@ namespace BookApp.ViewModels
                 UserDialogs.Instance.ShowLoading("Please wait...");
                 await _bookService.ReviewBookAsync(_selectedBook, _rating);
                 UserDialogs.Instance.HideLoading();
-                await _navigationService.GoBackAsync();
+                if (_isFirstReview)
+                    await _navigationService.GoToPageAsync<ReviewThanksPage>(removeCurrentPage: true);
+                else
+                    await _navigationService.GoBackAsync();
             }
         }
 

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookApp.Views.ReviewThanksPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                mc:Ignorable="d"
+             Background="{StaticResource PageGradientBackground}"
+             Padding="0,50,0,20">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Image Source="check" Margin="0,20"/>
+            <Label Text="Thank you!" FontSize="32" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" />
+            <Label Text="You have submitted your first book review.&#x0a;Now it's time to make some friends." 
+                   FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            <Button Text="Add friends" Command="{Binding AddFriendsCommand}"
+                    WidthRequest="320" HorizontalOptions="Center" Margin="0,20"/>
+
+            <Label Text="You may also be interested in:" HorizontalOptions="Center" VerticalOptions="EndAndExpand"
+                   TextColor="#384F7D" FontSize="16" Margin="0,10" TextTransform="Uppercase" FontAttributes="Bold"/>
+
+            <FlexLayout Direction="Row" JustifyContent="Center"  BindableLayout.ItemsSource="{Binding Suggestions}">
+                <d:BindableLayout.ItemsSource>
+                    <x:Array Type="{Type x:String}">
+                        <x:String></x:String>
+                        <x:String></x:String>
+                        <x:String></x:String>
+                    </x:Array>
+                </d:BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout WidthRequest="100" Margin="10,0">
+                            <Frame CornerRadius="7" Padding="0" HorizontalOptions="Center">
+                                <ffimage:CachedImage Source="{Binding CoverImageUrl}" WidthRequest="100" HeightRequest="130" d:Background="Red" Success="CachedImage_Success" />
+                            </Frame>
+                            <Label Text="{Binding Title}" d:Text="Scar Tissue" FontSize="16" HorizontalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation"/>
+                            <Label Opacity="0.8" Text="{Binding Author}" d:Text="Anthony Kiedis" HorizontalOptions="Center" MaxLines="1" LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</base:BasePage>

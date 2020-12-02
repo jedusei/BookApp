@@ -186,4 +186,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\arrow_left.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check.svg" />
+  </ItemGroup>
 </Project>

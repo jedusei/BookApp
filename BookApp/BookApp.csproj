@@ -29,6 +29,9 @@
     <Compile Update="Controls\SearchEntry.xaml.cs">
       <DependentUpon>SearchEntry.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ReviewThanksPage.xaml.cs">
+      <DependentUpon>ReviewThanksPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\IntroPage.xaml.cs">
       <DependentUpon>IntroPage.xaml</DependentUpon>
     </Compile>

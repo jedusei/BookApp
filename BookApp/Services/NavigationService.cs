@@ -12,10 +12,10 @@ namespace BookApp.Services
     {
         public async Task InitializeAsync()
         {
-            await GoToPageAsync<IntroPage>();
+            await GoToPageAsync<MainPage>();
         }
 
-        public async Task GoToPageAsync<TPage>(object navigationData = null, bool clearHistory = false) where TPage : BasePage
+        public async Task GoToPageAsync<TPage>(object navigationData = null, bool clearHistory = false, bool removeCurrentPage = false) where TPage : BasePage
         {
             BasePage targetPage = null;
             if (Application.Current.MainPage == null)
@@ -58,7 +58,12 @@ namespace BookApp.Services
 
                 await navigation.PushAsync(targetPage);
 
-                if (clearHistory)
+                if (!clearHistory)
+                {
+                    if (removeCurrentPage)
+                        navigation.RemovePage(navigation.NavigationStack[^2]);
+                }
+                else
                 {
                     for (int j = navigation.NavigationStack.Count - 2; j >= 0; j--)
                         navigation.RemovePage(navigation.NavigationStack[j]);

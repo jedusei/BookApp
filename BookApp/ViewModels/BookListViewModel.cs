@@ -30,7 +30,13 @@ namespace BookApp.ViewModels
             if (!DesignMode.IsDesignModeEnabled)
                 _bookService = DependencyService.Get<IBookService>();
 
-            AddReviewCommand = new Command(async () => await _navigationService.GoToPageAsync<AddReviewPage>());
+            AddReviewCommand = new Command(async () =>
+            {
+                await _navigationService.GoToPageAsync<AddReviewPage>(new AddReviewPage.Args
+                {
+                    IsFirstReview = _books.Count == 0
+                });
+            });
         }
 
         public override async void OnStart()
