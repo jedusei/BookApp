@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             x:Class="BookApp.Views.AddFriendsPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <ContentPage.Content>
+        <AbsoluteLayout Background="{StaticResource PageGradientBackground}">
+            <Path Aspect="Fill" StrokeThickness="0" AbsoluteLayout.LayoutBounds="0,0,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional"
+                  Data="M0 136.5V0H372V136.5C194.782 160.467 124.363 152.191 0 136.5Z">
+                <Path.Fill>
+                    <LinearGradientBrush StartPoint="0.2,1" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#F66EB4"/>
+                        <GradientStop Offset="1" Color="#FEB665"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+
+            <syncEffectsView:SfEffectsView Padding="10" CornerRadius="50" AbsoluteLayout.LayoutBounds="10,62">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </ContentView.GestureRecognizers>
+
+                <Image Source="arrow_left" WidthRequest="25" HeightRequest="25"/>
+            </syncEffectsView:SfEffectsView>
+
+            <Label Text="Add Friends" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
+
+            <StackLayout  Spacing="0" AbsoluteLayout.LayoutBounds="0,180,1,1" AbsoluteLayout.LayoutFlags="XProportional, SizeProportional">
+                <Label Text="How do you want to add friends?" TextColor="#384F7D" FontSize="14" Padding="30,20,0,20" TextTransform="Uppercase"/>
+                <BoxView Color="#384F7D" Opacity="0.1" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1"/>
+                <StackLayout Spacing="0">
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Search by username</x:String>
+                            <x:String>Search Facebook</x:String>
+                            <x:String>Search contacts</x:String>
+                            <x:String>Send email invitation</x:String>
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <syncEffectsView:SfEffectsView>
+                                <Grid RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="1"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="{Binding}" FontSize="18" Margin="30,20,0,20"/>
+                                    <Label Text="&#xf0142;" Grid.Column="1" FontFamily="MaterialIcons" FontSize="25" Margin="0,20,30,0"/>
+                                    <BoxView Color="#384F7D" Opacity="0.1" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                </Grid>
+                            </syncEffectsView:SfEffectsView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</base:BasePage>
