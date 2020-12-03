@@ -45,7 +45,7 @@
                 </Ellipse.Fill>
             </Ellipse>
             <StackLayout Padding="30,210,30,30" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
-                <Label Text="Sign in" TextColor="#384F7D" FontAttributes="Bold" FontSize="32" Margin="0,20,0,25"/>
+                <Label Text="Sign in" TextColor="#384F7D" Style="{StaticResource BoldText}" FontSize="32" Margin="0,20,0,25"/>
 
                 <Label Text="Email" Style="{StaticResource FieldLabel}"/>
                 <controls:FormEntry Text="{Binding Email}" Keyboard="Email" IsValid="{Binding IsEmailValid}"/>
@@ -63,7 +63,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="New here? "/>
-                            <Span Text="Create an account" FontSize="16" FontAttributes="Bold" TextDecorations="Underline">
+                            <Span Text="Create an account" FontSize="16" Style="{StaticResource BoldText}" TextDecorations="Underline">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SignupCommand}"/>
                                 </Span.GestureRecognizers>

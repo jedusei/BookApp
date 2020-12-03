@@ -29,7 +29,7 @@
             <Label Text="Add Friends" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
 
             <StackLayout  Spacing="0" AbsoluteLayout.LayoutBounds="0,180,1,1" AbsoluteLayout.LayoutFlags="XProportional, SizeProportional">
-                <Label Text="How do you want to add friends?" TextColor="#384F7D" FontSize="14" Padding="30,20,0,20" TextTransform="Uppercase"/>
+                <Label Text="How do you want to add friends?" TextColor="#384F7D" FontSize="14" Padding="30,20,0,20" TextTransform="Uppercase" Style="{StaticResource BoldText}"/>
                 <BoxView Color="#384F7D" Opacity="0.1" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1"/>
                 <StackLayout Spacing="0">
                     <BindableLayout.ItemsSource>

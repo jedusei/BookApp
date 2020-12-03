@@ -12,7 +12,7 @@
                                 AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
                 <CollectionView.Header>
                     <StackLayout Spacing="10" Padding="0,42,0,0">
-                        <Label Text="Recently Added" FontSize="14" TextTransform="Uppercase" FontAttributes="Bold" Margin="30,0,0,0"/>
+                        <Label Text="Recently Added" FontSize="14" TextTransform="Uppercase" Style="{StaticResource BoldText}" Margin="30,0,0,0"/>
                         <CollectionView ItemsSource="{Binding Friends}" HeightRequest="80">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
@@ -33,7 +33,7 @@
                                 <BoxView WidthRequest="20"/>
                             </CollectionView.Footer>
                         </CollectionView>
-                        <Label Text="Chat" TextTransform="Uppercase" FontAttributes="Bold" Background="White" Padding="30,30,0,10" Margin="0,20,0,0"/>
+                        <Label Text="Chat" TextTransform="Uppercase" Style="{StaticResource BoldText}" Background="White" Padding="30,30,0,10" Margin="0,20,0,0"/>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.Triggers>
@@ -66,7 +66,7 @@
                                     <Image Source="{Binding ProfileImageUrl}"/>
                                 </Frame>
 
-                                <Label Text="{Binding Name}" Grid.Column="1" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Name}" Grid.Column="1" Style="{StaticResource BoldText}" FontSize="16"/>
                                 <Label Text="{Binding Messages[0].DateCreated, StringFormat='{0: h:mm tt}'}" Grid.Column="2" Opacity="0.6"/>
                                 <Label Text="{Binding Messages[0].Content}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" MaxLines="3" LineBreakMode="TailTruncation" Opacity="0.8"/>
                             </Grid>

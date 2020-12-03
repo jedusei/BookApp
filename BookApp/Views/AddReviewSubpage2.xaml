@@ -18,11 +18,11 @@
                 </Frame>
 
                 <StackLayout Spacing="0" Grid.Column="1" VerticalOptions="Center">
-                    <Label Text="{Binding SelectedBook.Title}" FontSize="25" MaxLines="2" LineBreakMode="TailTruncation"/>
+                    <Label Text="{Binding SelectedBook.Title}" FontSize="25" Style="{StaticResource BoldText}" MaxLines="2" LineBreakMode="TailTruncation"/>
                     <Label Text="{Binding SelectedBook.Author}" FontSize="20" 
                                            Opacity="0.8" MaxLines="1" LineBreakMode="TailTruncation"/>
 
-                    <Label FontSize="14" FontAttributes="Bold" Margin="0,15,0,0">
+                    <Label FontSize="14" Style="{StaticResource BoldText}" Margin="0,15,0,0">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="&#xf04ce;" FontFamily="MaterialIcons"/>
@@ -39,7 +39,7 @@
             <Label Text="{Binding SelectedBook.Description}" FontSize="16" MaxLines="5" LineBreakMode="TailTruncation"
                                    Opacity="0.8" Margin="0,20" LineHeight="1.5"/>
 
-            <Label Text="Full Synopsis" FontSize="16" FontAttributes="Bold" TextDecorations="Underline">
+            <Label Text="Full Synopsis" FontSize="16" Style="{StaticResource BoldText}" TextDecorations="Underline">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OpenWebLinkCommand}"/>
                 </Label.GestureRecognizers>
@@ -47,7 +47,7 @@
 
             <BoxView Color="#384F7D" Opacity="0.1" HeightRequest="1" Margin="0,30"/>
 
-            <Label HorizontalOptions="Center" Text="Tap to add rating" TextTransform="Uppercase"/>
+            <Label HorizontalOptions="Center" Text="Tap to add rating" Style="{StaticResource BoldText}" Opacity="0.8" TextTransform="Uppercase"/>
             <xforms:SfRating Precision="Half" Value="{Binding Rating, Mode=TwoWay}" ItemSize="18" HorizontalOptions="Center" Margin="0,5">
                 <xforms:SfRating.RatingSettings>
                     <xforms:SfRatingSettings RatedFill="#FFD381" UnRatedFill="#40384F7D" RatedStrokeWidth="0" UnRatedStrokeWidth="0"/>

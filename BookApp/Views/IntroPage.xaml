@@ -132,7 +132,7 @@
                                     <Ellipse Fill="{Binding ImageBackground}" WidthRequest="200" HeightRequest="200"/>
                                     <Image Source="{Binding Image}" WidthRequest="80" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
                                 </AbsoluteLayout>
-                                <Label Text="{Binding Title}" TextColor="#384F7D" FontAttributes="Bold" FontSize="32" Margin="0,30,0,10"/>
+                                <Label Text="{Binding Title}" TextColor="#384F7D" Style="{StaticResource BoldText}" FontSize="32" Margin="0,30,0,10"/>
                                 <Label Text="{Binding Description}" TextColor="#CC384F7D" FontSize="16" HorizontalTextAlignment="Center"/>
                             </FlexLayout>
                         </AbsoluteLayout>
@@ -154,7 +154,7 @@
                     <Image Source="arrow_right" Scale="0.5"/>
                 </Frame>
             </StackLayout>
-            <Label Text="Skip Intro" TextColor="#445984" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,50" TextDecorations="Underline">
+            <Label Text="Skip Intro" TextColor="#445984" FontSize="16" Style="{StaticResource BoldText}" HorizontalOptions="Center" Margin="0,20,0,50" TextDecorations="Underline">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Position, Source={Reference carouselView}}" Value="2">
                         <Setter Property="Opacity" Value="0"/>

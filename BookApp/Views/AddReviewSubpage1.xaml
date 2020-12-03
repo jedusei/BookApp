@@ -53,7 +53,7 @@
                                                         Padding="20,0" HeightRequest="50" VerticalTextAlignment="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Author}" FontSize="18" FontAttributes="Bold"/>
+                                        <Span Text="{Binding Author}" FontSize="18" Style="{StaticResource BoldText}"/>
                                         <Span Text=" "/>
                                         <Span Text="{Binding Title}"/>
                                     </FormattedString>

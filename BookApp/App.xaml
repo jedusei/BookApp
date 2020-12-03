@@ -26,9 +26,12 @@
                 <Setter Property="FontFamily" Value="CircularStd"/>
             </Style>
 
-            <Style x:Key="TitleText" TargetType="Label">
+            <Style x:Key="BoldText" TargetType="Label">
+                <Setter Property="FontFamily" Value="CircularStdBold"/>
+            </Style>
+            
+            <Style x:Key="TitleText" TargetType="Label" BasedOn="{StaticResource BoldText}">
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontSize" Value="25"/>
                 <Setter Property="Padding" Value="0,70,0,20"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
@@ -43,7 +46,7 @@
             </Style>
             
             <Style TargetType="Button">
-                <Setter Property="FontFamily" Value="CircularStd"/>
+                <Setter Property="FontFamily" Value="CircularStdBold"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontAttributes" Value="Bold"/>

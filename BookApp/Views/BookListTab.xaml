@@ -14,7 +14,7 @@
             <controls:SearchEntry WidthRequest="315" VerticalOptions="Start" HeightRequest="70" HorizontalOptions="Center" 
                                   Placeholder="Search for book" Icon="search"/>
 
-            <Label Text="Books reviewed by you" TextColor="#384F7D" FontSize="16" Padding="20,20,0,5" TextTransform="Uppercase">
+            <Label Text="Books reviewed by you" TextColor="#384F7D" Style="{StaticResource BoldText}" Opacity="0.8" Padding="20,20,0,5" TextTransform="Uppercase">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Books.Count, FallbackValue=0}" Value="0">
                         <Setter Property="Opacity" Value="0"/>
@@ -63,7 +63,7 @@
                                             <ffimage:CachedImage Grid.RowSpan="3" Source="{Binding CoverImageUrl}" HeightRequest="150"/>
 
                                             <StackLayout Grid.Column="1">
-                                                <Label Text="{Binding Title}" d:Text="Title" LineBreakMode="TailTruncation" MaxLines="2" TextColor="#384F7D" FontSize="22" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Title}" d:Text="Title" LineBreakMode="TailTruncation" MaxLines="2" TextColor="#384F7D" FontSize="22" Style="{StaticResource BoldText}"/>
                                             </StackLayout>
 
                                             <Label Grid.Column="1" Grid.Row="1" Text="{Binding Author}" d:Text="Author" TextColor="#384F7D" FontSize="16" Opacity="0.8"

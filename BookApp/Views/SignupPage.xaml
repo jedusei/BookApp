@@ -50,7 +50,7 @@
                         <Image Source="light" WidthRequest="70" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional" TranslationY="-5"/>
                     </AbsoluteLayout>
 
-                    <Label Text="Welcome!" TextColor="#384F7D" FontAttributes="Bold" FontSize="32" Margin="0,20,0,5" HorizontalTextAlignment="Center"/>
+                    <Label Text="Welcome!" TextColor="#384F7D" Style="{StaticResource BoldText}" FontSize="32" Margin="0,20,0,5" HorizontalTextAlignment="Center"/>
                     <Label Text="Create your account to get started. After that, you can share books and make friends." TextColor="#CC384F7D" FontSize="16" HorizontalTextAlignment="Center"/>
 
                     <Label Text="Email" Style="{StaticResource FieldLabel}"/>
@@ -71,7 +71,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Already have an account? "/>
-                                <Span Text="Login" FontSize="16" FontAttributes="Bold" TextDecorations="Underline">
+                                <Span Text="Login" FontSize="16" Style="{StaticResource BoldText}" TextDecorations="Underline">
                                     <Span.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding LoginCommand}"/>
                                     </Span.GestureRecognizers>
