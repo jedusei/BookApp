@@ -29,7 +29,7 @@
 
             <Label Text="{Binding Friend.Name}" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
 
-            <StackLayout  Spacing="20" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="XProportional, SizeProportional" Padding="0,115,0,0">
+            <StackLayout InputTransparent="True" Spacing="20" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="XProportional, SizeProportional" Padding="0,115,0,0">
                 <Frame Padding="0" HorizontalOptions="Center" WidthRequest="90" HeightRequest="120" CornerRadius="45" HasShadow="False">
                     <Image Source="{Binding Friend.ProfileImageUrl}"/>
                 </Frame>

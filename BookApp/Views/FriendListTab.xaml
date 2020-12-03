@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              x:Class="BookApp.Views.FriendListTab"
+             x:Name="this"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="clr-namespace:BookApp.Models"
              mc:Ignorable="d">
@@ -23,7 +24,7 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame HasShadow="False" Padding="0" WidthRequest="80" HeightRequest="80" CornerRadius="40">
-                                        <syncEffectsView:SfEffectsView>
+                                        <syncEffectsView:SfEffectsView TouchUpCommand="{Binding BindingContext.OpenChatCommand, Source={Reference this}}" TouchUpCommandParameter="{Binding}">
                                             <Image Source="{Binding ProfileImageUrl}"/>
                                         </syncEffectsView:SfEffectsView>
                                     </Frame>
@@ -38,7 +39,8 @@
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <syncEffectsView:SfEffectsView HeightRequest="100" Padding="30,10" BackgroundColor="White">
+                        <syncEffectsView:SfEffectsView HeightRequest="100" Padding="30,10" BackgroundColor="White" 
+                                                       TouchUpCommand="{Binding BindingContext.OpenChatCommand, Source={Reference this}}" TouchUpCommandParameter="{Binding}">
                             <Grid ColumnSpacing="20"> 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
@@ -55,8 +57,8 @@
                                 </Frame>
 
                                 <Label Text="{Binding Name}" Grid.Column="1" Style="{StaticResource BoldText}" FontSize="16"/>
-                                <Label Text="{Binding Messages[0].DateCreated, StringFormat='{0: h:mm tt}'}" Grid.Column="2" Opacity="0.6"/>
-                                <Label Text="{Binding Messages[0].Content}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" MaxLines="3" LineBreakMode="TailTruncation" Opacity="0.8"/>
+                                <Label Text="{Binding LastMessage.DateCreated, StringFormat='{0: h:mm tt}'}" Grid.Column="2" Opacity="0.6"/>
+                                <Label Text="{Binding LastMessage.Content}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" MaxLines="3" LineBreakMode="TailTruncation" Opacity="0.8"/>
                             </Grid>
                         </syncEffectsView:SfEffectsView>
                     </DataTemplate>

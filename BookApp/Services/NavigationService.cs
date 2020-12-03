@@ -1,5 +1,4 @@
-﻿using BookApp.Models;
-using BookApp.Views;
+﻿using BookApp.Views;
 using BookApp.Views.Base;
 using System;
 using System.Threading.Tasks;
@@ -12,65 +11,7 @@ namespace BookApp.Services
     {
         public async Task InitializeAsync()
         {
-            await GoToPageAsync<ChatPage>(new ChatPage.Args
-            {
-                Friend = new Friend
-                {
-                    Name = "Rachel",
-                    ProfileImageUrl = "https://dieteticallyspeaking.com/wp-content/uploads/2017/01/profile-square.jpg",
-                    Messages = new System.Collections.ObjectModel.ObservableCollection<Message>(new Message[]
-                    {
-                        new Message
-                        {
-                            IsFromMe = true,
-                            Content = "Quisque dictum varius arcu.",
-                            DateCreated = new DateTime(2020,12,2,13,30,0)
-                        },
-                        new Message
-                        {
-                            IsFromMe = false,
-                            Content = "Yeah, I think so too. I also loved his other books.",
-                            DateCreated = new DateTime(2020,12,2,13,31,0)
-                        },
-                        new Message
-                        {
-                            IsFromMe = true,
-                            Content = "Haha, yes!",
-                            DateCreated = new DateTime(2020,12,2,13,31,10)
-                        },
-                        new Message
-                        {
-                            IsFromMe = false,
-                            Content = "LOL <3 Agree.",
-                            DateCreated = new DateTime(2020,12,2,13,33,0)
-                        },
-                        new Message
-                        {
-                            IsFromMe = true,
-                            Content = "Quisque dictum varius arcu.",
-                            DateCreated = new DateTime(2020,12,2,13,35,0)
-                        },
-                        new Message
-                        {
-                            IsFromMe = false,
-                            Content = "Yeah, I think so too. I also loved his other books.",
-                            DateCreated = new DateTime(2020,12,2,13,36,0)
-                        },
-                        new Message
-                        {
-                            IsFromMe = true,
-                            Content = "Haha, yes!",
-                            DateCreated = new DateTime(2020,12,2,13,36,10)
-                        },
-                        new Message
-                        {
-                            IsFromMe = false,
-                            Content = "LOL <3 Agree.",
-                            DateCreated = new DateTime(2020,12,2,13,40,0)
-                        }
-                    })
-                }
-            });
+            await GoToPageAsync<MainPage>();
         }
 
         public async Task GoToPageAsync<TPage>(object navigationData = null, bool clearHistory = false, bool removeCurrentPage = false) where TPage : BasePage

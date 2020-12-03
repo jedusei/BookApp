@@ -3,6 +3,7 @@ using BookApp.Services;
 using BookApp.Views;
 using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -28,6 +29,14 @@ namespace BookApp.ViewModels
         {
             _friendService = DependencyService.Get<IFriendService>();
             AddFriendsCommand = new AsyncCommand(() => _navigationService.GoToPageAsync<AddFriendsPage>());
+            OpenChatCommand = new AsyncCommand<Friend>(async (friend) =>
+            {
+                await Task.Delay(300);
+                await _navigationService.GoToPageAsync<ChatPage>(new ChatPage.Args
+                {
+                    Friend = friend
+                });
+            });
         }
 
         public override async void OnStart()

@@ -1,7 +1,6 @@
 ﻿using BookApp.Models;
 using BookApp.Services;
 using BookApp.Views;
-using MvvmHelpers.Commands;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -22,8 +21,51 @@ namespace BookApp.ViewModels
                 {
                     new Message
                     {
-                        Content = "Quisque dictum varius arcu, eu scelerisque arcu consectetur ut. Duis dapibus nulla vitae ipsum mattis porttitor eget suscipit tellus.",
+                        IsFromMe = true,
+                        Content = "Quisque dictum varius arcu.",
                         DateCreated = new DateTime(2020,12,2,13,30,0)
+                    },
+                    new Message
+                    {
+                        IsFromMe = false,
+                        Content = "Yeah, I think so too. I also loved his other books.",
+                        DateCreated = new DateTime(2020,12,2,13,31,0)
+                    },
+                    new Message
+                    {
+                        IsFromMe = true,
+                        Content = "Haha, yes!",
+                        DateCreated = new DateTime(2020,12,2,13,31,10)
+                    },
+                    new Message
+                    {
+                        IsFromMe = false,
+                        Content = "LOL <3 Agree.",
+                        DateCreated = new DateTime(2020,12,2,13,33,0)
+                    },
+                    new Message
+                    {
+                        IsFromMe = true,
+                        Content = "Quisque dictum varius arcu.",
+                        DateCreated = new DateTime(2020,12,2,13,35,0)
+                    },
+                    new Message
+                    {
+                        IsFromMe = false,
+                        Content = "Yeah, I think so too. I also loved his other books.",
+                        DateCreated = new DateTime(2020,12,2,13,36,0)
+                    },
+                    new Message
+                    {
+                        IsFromMe = true,
+                        Content = "Haha, yes!",
+                        DateCreated = new DateTime(2020,12,2,13,36,10)
+                    },
+                    new Message
+                    {
+                        IsFromMe = false,
+                        Content = "LOL <3 Agree.",
+                        DateCreated = new DateTime(2020,12,2,13,40,0)
                     }
                 })
             },
