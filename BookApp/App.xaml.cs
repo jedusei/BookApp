@@ -32,7 +32,7 @@ namespace BookApp
         public App(Action exitAction = null)
         {
             InitializeComponent();
-            _exitAction = exitAction ?? Quit;
+            _exitAction = exitAction ?? Current.Quit;
 
             if (!DesignMode.IsDesignModeEnabled)
                 Platform = DependencyService.Get<IPlatform>();
