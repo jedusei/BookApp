@@ -1,7 +1,7 @@
 ﻿using BookApp.Models;
-using System;
+using BookApp.Views;
+using MvvmHelpers.Commands;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace BookApp.ViewModels
 {
@@ -43,6 +43,7 @@ namespace BookApp.ViewModels
 
         public ReviewThanksViewModel()
         {
+            AddFriendsCommand = new AsyncCommand(() => _navigationService.GoToPageAsync<AddFriendsPage>(removeCurrentPage: true));
         }
     }
 }

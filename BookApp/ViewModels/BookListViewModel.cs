@@ -33,7 +33,7 @@ namespace BookApp.ViewModels
             {
                 await _navigationService.GoToPageAsync<AddReviewPage>(new AddReviewPage.Args
                 {
-                    IsFirstReview = _books.Count == 0
+                    IsFirstReview = _books?.Count == 0
                 });
             });
         }
