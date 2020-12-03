@@ -8,10 +8,10 @@
              mc:Ignorable="d">
     <ContentView.Content>
         <AbsoluteLayout>
-            <CollectionView Margin="0,38,0,0" IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
+            <CollectionView Margin="0,36.5,0,0" IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
                                 AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
                 <CollectionView.Header>
-                    <StackLayout Spacing="10" Padding="0,42,0,0">
+                    <StackLayout Spacing="10" Padding="0,45,0,0">
                         <Label Text="Recently Added" FontSize="14" TextTransform="Uppercase" Style="{StaticResource BoldText}" Margin="30,0,0,0"/>
                         <CollectionView ItemsSource="{Binding Friends}" HeightRequest="80">
                             <CollectionView.ItemsLayout>
@@ -37,17 +37,13 @@
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.Triggers>
+                    <DataTrigger TargetType="CollectionView" Binding="{Binding Friends.Count, FallbackValue=0}" Value="0">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
                     <DataTrigger TargetType="CollectionView" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
                         <Setter Property="IsVisible" Value="True"/>
                     </DataTrigger>
                 </CollectionView.Triggers>
-                <CollectionView.EmptyView>
-                    <StackLayout>
-                        <Image Source="sad_face" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
-                        <Label Text="You have friends as of yet. Just add your first friends to get started."  VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"
-                                       HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
-                    </StackLayout>
-                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <syncEffectsView:SfEffectsView HeightRequest="100" Padding="30,10" BackgroundColor="White">
@@ -77,8 +73,21 @@
                     <BoxView Color="Transparent" HeightRequest="80"/>
                 </CollectionView.Footer>
             </CollectionView>
+            <StackLayout IsVisible="False" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
+                        <Setter Property="IsVisible" Value="True"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="StackLayout" Binding="{Binding Friends.Count, FallbackValue=0}" Value="0">
+                        <Setter Property="IsVisible" Value="True"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+                <Image Source="sad_face" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
+                <Label Text="You have friends as of yet. Just add your first friends to get started."  VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"
+                                       HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
+            </StackLayout>
             <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   TranslationY="-0" IsRunning="True" IsVisible="False">
+                                   IsRunning="True" IsVisible="False">
                 <ActivityIndicator.Triggers>
                     <DataTrigger TargetType="ActivityIndicator" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loading}">
                         <Setter Property="IsVisible" Value="True"/>

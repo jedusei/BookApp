@@ -1,7 +1,6 @@
 ﻿using BookApp.Views;
 using BookApp.Views.Base;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,7 +11,7 @@ namespace BookApp.Services
     {
         public async Task InitializeAsync()
         {
-            await GoToPageAsync<AddReviewPage>();
+            await GoToPageAsync<MainPage>();
         }
 
         public async Task GoToPageAsync<TPage>(object navigationData = null, bool clearHistory = false, bool removeCurrentPage = false) where TPage : BasePage

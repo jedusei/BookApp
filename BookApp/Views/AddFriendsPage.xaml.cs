@@ -7,6 +7,7 @@ namespace BookApp.Views
         public AddFriendsPage()
         {
             InitializeComponent();
+            BindingContext = new ViewModels.AddFriendsViewModel();
         }
     }
 }

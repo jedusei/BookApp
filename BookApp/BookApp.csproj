@@ -22,6 +22,7 @@
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.468" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.3.0.51" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
@@ -50,6 +51,9 @@
     </Compile>
     <Compile Update="Views\AddReviewPage.xaml.cs">
       <DependentUpon>AddReviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ImportingContactsPage.xaml.cs">
+      <DependentUpon>ImportingContactsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\_SamplePage.xaml.cs">
       <DependentUpon>_SamplePage.xaml</DependentUpon>
