@@ -14,8 +14,11 @@ namespace BookApp.Views
 
         void CachedImage_Success(object sender, FFImageLoading.Forms.CachedImageEvents.SuccessEventArgs e)
         {
-            var image = sender as View;
-            image.WidthRequest = e.ImageInformation.OriginalWidth * image.HeightRequest / e.ImageInformation.OriginalHeight;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var image = sender as View;
+                image.WidthRequest = e.ImageInformation.OriginalWidth * image.HeightRequest / e.ImageInformation.OriginalHeight;
+            });
         }
     }
 }
