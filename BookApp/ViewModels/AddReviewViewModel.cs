@@ -90,11 +90,12 @@ namespace BookApp.ViewModels
             }
         }
 
-        void SelectBook(CollectionView collectionView)
+        async void SelectBook(CollectionView collectionView)
         {
             if (collectionView.SelectedItem != null)
             {
                 SelectedBook = collectionView.SelectedItem as Book;
+                await Task.Delay(400);
                 collectionView.SelectedItem = null;
                 NextCommand.Execute(null);
             }
