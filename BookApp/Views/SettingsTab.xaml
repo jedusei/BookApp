@@ -28,7 +28,8 @@
                 </BindableLayout.ItemsSource>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <syncEffectsView:SfEffectsView TouchUpCommand="{Binding BindingContext.OpenSectionCommand, Source={Reference this}}">
+                        <syncEffectsView:SfEffectsView TouchUpCommand="{Binding BindingContext.OpenSectionCommand, Source={Reference this}}"
+                                                       TouchUpCommandParameter="{Binding Id}">
                             <Grid RowSpacing="0" ColumnSpacing="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>

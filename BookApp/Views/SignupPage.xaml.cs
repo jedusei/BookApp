@@ -1,8 +1,8 @@
 ﻿using BookApp.Views.Base;
-using Xamarin.Forms;
 
 namespace BookApp.Views
 {
+    [SingletonPage]
     public partial class SignupPage : BasePage
     {
         public SignupPage()

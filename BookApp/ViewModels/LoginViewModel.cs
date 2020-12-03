@@ -35,7 +35,7 @@ namespace BookApp.ViewModels
             LoginCommand = new Command(LoginAsync);
             SignupCommand = new Command(async () =>
             {
-                await _navigationService.GoBackAsync();
+                await _navigationService.GoToPageAsync<SignupPage>(removeCurrentPage: true);
             });
         }
 
