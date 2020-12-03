@@ -1,6 +1,6 @@
-﻿namespace BookApp.Views.Base
+﻿namespace BookApp.Views
 {
-    public partial class SamplePage : BasePage
+    public partial class SamplePage : Base.BasePage
     {
         public SamplePage()
         {

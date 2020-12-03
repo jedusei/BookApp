@@ -51,6 +51,9 @@
     <Compile Update="Views\AddReviewPage.xaml.cs">
       <DependentUpon>AddReviewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\_SamplePage.xaml.cs">
+      <DependentUpon>_SamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SignupPage.xaml.cs">
       <DependentUpon>SignupPage.xaml</DependentUpon>
     </Compile>
@@ -66,7 +69,7 @@
     <EmbeddedResource Update="Views\AddReviewSubpage2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Base\SamplePage.xaml">
+    <EmbeddedResource Update="Views\_SamplePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\BookListTab.xaml">
