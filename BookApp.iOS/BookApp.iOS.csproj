@@ -192,4 +192,19 @@
   <ItemGroup>
     <BundleResource Include="Resources\sad_face.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\account_small.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lock.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\support.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bell_small.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\info.svg" />
+  </ItemGroup>
 </Project>

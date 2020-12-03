@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookApp.Views.SettingsTab"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:BookApp.Models"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             x:Name="this"
+             mc:Ignorable="d">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" Padding="0,30" Spacing="0">
+            <BoxView Color="#384F7D" Opacity="0.1" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" Margin="0,80,0,0"/>
+            <StackLayout Spacing="0">
+                <BindableLayout.ItemsSource>
+                    <x:Array Type="{x:Type models:MenuItem}">
+                        <models:MenuItem Id="0" Text="Account" Icon="account_small"/>
+                        <models:MenuItem Id="1" Text="Notifications" Icon="bell_small"/>
+                        <models:MenuItem Id="2" Text="Privacy" Icon="lock"/>
+                        <models:MenuItem Id="3" Text="Help Center" Icon="support"/>
+                        <models:MenuItem Id="4" Text="About" Icon="info"/>
+                        <models:MenuItem Id="5" Text="Logout">
+                            <models:MenuItem.Icon>
+                                <FontImageSource Glyph="&#xf0206;" FontFamily="MaterialIcons" Size="20" Color="#A6445984" />
+                            </models:MenuItem.Icon>
+                        </models:MenuItem>
+                    </x:Array>
+                </BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <syncEffectsView:SfEffectsView TouchUpCommand="{Binding BindingContext.OpenSectionCommand, Source={Reference this}}">
+                            <Grid RowSpacing="0" ColumnSpacing="15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+
+                                <Image Source="{Binding Icon}" Margin="30,0,0,0"/>
+                                <Label Grid.Column="1" Text="{Binding Text}" FontSize="18" Margin="0,20"/>
+                                <Label Text="&#xf0142;" Grid.Column="2" FontFamily="MaterialIcons" FontSize="25" Margin="0,20,30,0"/>
+                                <BoxView Color="#384F7D" Opacity="0.1" Grid.Row="1" Grid.ColumnSpan="3"/>
+                            </Grid>
+                        </syncEffectsView:SfEffectsView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

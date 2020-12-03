@@ -37,6 +37,9 @@
     <Compile Update="Views\AddFriendsPage.xaml.cs">
       <DependentUpon>AddFriendsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\SettingsTab.xaml.cs">
+      <DependentUpon>SettingsTab.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\FriendListTab.xaml.cs">
       <DependentUpon>FriendListTab.xaml</DependentUpon>
     </Compile>

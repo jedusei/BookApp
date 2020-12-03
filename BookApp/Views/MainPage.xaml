@@ -71,7 +71,7 @@
                 </tabview:SfTabItem>
                 <tabview:SfTabItem Title="Settings" IconFont="&#xf0493;">
                     <tabview:SfTabItem.Content>
-                        <BoxView/>
+                        <views:SettingsTab/>
                     </tabview:SfTabItem.Content>
                 </tabview:SfTabItem>
             </tabview:SfTabView>
