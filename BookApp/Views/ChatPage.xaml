@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             x:Class="BookApp.Views.ChatPage"
+             x:Name="this"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BookApp.Controls"
+             mc:Ignorable="d">
+    <ContentPage.Content>
+        <AbsoluteLayout Background="{StaticResource PageGradientBackground}">
+            <Path Aspect="Fill" StrokeThickness="0" AbsoluteLayout.LayoutBounds="0,0,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional"
+                  Data="M0 136.5V0H372V136.5C194.782 160.467 124.363 152.191 0 136.5Z">
+                <Path.Fill>
+                    <LinearGradientBrush StartPoint="0.2,1" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#F66EB4"/>
+                        <GradientStop Offset="1" Color="#FEB665"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+
+            <syncEffectsView:SfEffectsView Padding="10" CornerRadius="50" AbsoluteLayout.LayoutBounds="10,62">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </ContentView.GestureRecognizers>
+
+                <Image Source="arrow_left" WidthRequest="25" HeightRequest="25"/>
+            </syncEffectsView:SfEffectsView>
+
+            <Label Text="{Binding Friend.Name}" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
+
+            <StackLayout  Spacing="20" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="XProportional, SizeProportional" Padding="0,115,0,0">
+                <Frame Padding="0" HorizontalOptions="Center" WidthRequest="90" HeightRequest="120" CornerRadius="45" HasShadow="False">
+                    <Image Source="{Binding Friend.ProfileImageUrl}"/>
+                </Frame>
+                <CollectionView ItemsSource="{Binding Friend.Messages}">
+                    <CollectionView.Resources>
+                        <ResourceDictionary>
+                            <Style x:Key="MessageTitle" BasedOn="{StaticResource BoldText}" TargetType="Label">
+                                <Setter Property="FontSize" Value="17"/>
+                            </Style>
+                            <Style x:Key="Message" TargetType="Label">
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Style>
+                        </ResourceDictionary>
+                    </CollectionView.Resources>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <controls:MessageTemplateSelector>
+                            <controls:MessageTemplateSelector.IncomingMessageTemplate>
+                                <DataTemplate>
+                                    <ContentView Padding="20,10,120,10">
+                                        <Frame HorizontalOptions="Start" CornerRadius="10">
+                                            <StackLayout>
+                                                <Label Text="{Binding BindingContext.Friend.Name, Source={Reference this}}" Style="{StaticResource MessageTitle}"/>
+                                                <Label Text="{Binding Content}" Style="{StaticResource Message}"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ContentView>
+                                </DataTemplate>
+                            </controls:MessageTemplateSelector.IncomingMessageTemplate>
+                            <controls:MessageTemplateSelector.OutgoingMessageTemplate>
+                                <DataTemplate>
+                                    <ContentView Padding="120,10,20,10">
+                                        <Frame HorizontalOptions="End" CornerRadius="10">
+                                            <Frame.Background>
+                                                <LinearGradientBrush EndPoint="1,0">
+                                                    <GradientStop Offset="0" Color="#B2445984"/>
+                                                    <GradientStop Offset="1" Color="#445984"/>
+                                                </LinearGradientBrush>
+                                            </Frame.Background>
+                                            <StackLayout>
+                                                <Label Text="You" Style="{StaticResource MessageTitle}" TextColor="White"/>
+                                                <Label Text="{Binding Content}" Style="{StaticResource Message}" TextColor="White"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ContentView>
+                                </DataTemplate>
+                            </controls:MessageTemplateSelector.OutgoingMessageTemplate>
+                        </controls:MessageTemplateSelector>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                         <BoxView HeightRequest="50"/>
+                    </CollectionView.Footer>
+                </CollectionView>               
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</base:BasePage>

@@ -55,6 +55,9 @@
     <Compile Update="Views\ImportingContactsPage.xaml.cs">
       <DependentUpon>ImportingContactsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ChatPage.xaml.cs">
+      <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\_SamplePage.xaml.cs">
       <DependentUpon>_SamplePage.xaml</DependentUpon>
     </Compile>
