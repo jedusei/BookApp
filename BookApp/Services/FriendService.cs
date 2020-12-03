@@ -24,16 +24,72 @@ namespace BookApp.Services
                     }
                 })
             },
+            new Friend
+            {
+                Name = "Tom",
+                ProfileImageUrl = "https://darylh.com/wp-content/uploads/2017/05/Profile-Picture-Square.jpg",
+                Messages = new ObservableCollection<Message>(new Message[]
+                {
+                    new Message
+                    {
+                        Content = "Quisque dictum varius arcu, eu scelerisque arcu consectetur ut. Duis dapibus nulla vitae ipsum mattis porttitor eget suscipit tellus.",
+                        DateCreated = new DateTime(2020,12,2,9,30,0)
+                    }
+                })
+            },
+            new Friend
+            {
+                Name = "Anna",
+                ProfileImageUrl = "https://th.bing.com/th/id/OIP.dFWozadKXRMaXcczQyDIwgHaHa?pid=Api&rs=1",
+                Messages = new ObservableCollection<Message>(new Message[]
+                {
+                    new Message
+                    {
+                        Content = "Quisque dictum varius arcu, eu scelerisque arcu consectetur ut. Duis dapibus nulla vitae ipsum mattis porttitor eget suscipit tellus.",
+                        DateCreated = new DateTime(2020,12,2,8,15,0)
+                    }
+                })
+            },
+            new Friend
+            {
+                Name = "Brad",
+                ProfileImageUrl = "https://th.bing.com/th/id/OIP.jcRbSaarQNTnJveKfWVQaAHaHa?pid=Api&w=1024&h=1024&rs=1",
+                Messages = new ObservableCollection<Message>(new Message[]
+                {
+                    new Message
+                    {
+                        Content = "Quisque dictum varius arcu, eu scelerisque arcu consectetur ut. Duis dapibus nulla vitae ipsum mattis porttitor eget suscipit tellus.",
+                        DateCreated = new DateTime(2020,12,2,8,23,0)
+                    }
+                })
+            },
+            new Friend
+            {
+                Name = "Kristen",
+                ProfileImageUrl = "https://th.bing.com/th/id/OIP.CPEgIDN1Y8HhgR-uAZP-uQHaHa?pid=Api&w=300&h=300&rs=1",
+                Messages = new ObservableCollection<Message>(new Message[]
+                {
+                    new Message
+                    {
+                        Content = "Quisque dictum varius arcu, eu scelerisque arcu consectetur ut. Duis dapibus nulla vitae ipsum mattis porttitor eget suscipit tellus.",
+                        DateCreated = new DateTime(2020,12,2,8,03,0)
+                    }
+                })
+            },
+            new Friend
+            {
+                Name = "Amy",
+                ProfileImageUrl = "https://th.bing.com/th/id/OIP.m-e-s5X-7gYySbTaRrcKkAHaHa?pid=Api&w=540&h=540&rs=1",
+                Messages = new ObservableCollection<Message>(new Message[]
+                {
+                    new Message
+                    {
+                        Content = "Quisque dictum varius arcu, eu scelerisque arcu consectetur ut. Duis dapibus nulla vitae ipsum mattis porttitor eget suscipit tellus.",
+                        DateCreated = new DateTime(2020,12,2,7,00,0)
+                    }
+                })
+            },
         });
-
-        public FriendService()
-        {
-            _friends.Add(_friends[0]);
-            _friends.Add(_friends[0]);
-            _friends.Add(_friends[0]);
-            _friends.Add(_friends[0]);
-            _friends.Add(_friends[0]);
-        }
 
         public async Task AddFriendsAsync(params Friend[] friends)
         {

@@ -8,10 +8,10 @@
              mc:Ignorable="d">
     <ContentView.Content>
         <AbsoluteLayout>
-            <CollectionView Margin="0,40,0,0" IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
+            <CollectionView Margin="0,38,0,0" IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
                                 AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
                 <CollectionView.Header>
-                    <StackLayout Spacing="10" Padding="0,40,0,0">
+                    <StackLayout Spacing="10" Padding="0,42,0,0">
                         <Label Text="Recently Added" FontSize="14" TextTransform="Uppercase" FontAttributes="Bold" Margin="30,0,0,0"/>
                         <CollectionView ItemsSource="{Binding Friends}" HeightRequest="80">
                             <CollectionView.ItemsLayout>
@@ -30,7 +30,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                             <CollectionView.Footer>
-                                <BoxView WidthRequest="30"/>
+                                <BoxView WidthRequest="20"/>
                             </CollectionView.Footer>
                         </CollectionView>
                         <Label Text="Chat" TextTransform="Uppercase" FontAttributes="Bold" Background="White" Padding="30,30,0,10" Margin="0,20,0,0"/>
