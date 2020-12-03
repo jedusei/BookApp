@@ -37,8 +37,7 @@ namespace BookApp.ViewModels
 
         public SignupViewModel()
         {
-            if (!DesignMode.IsDesignModeEnabled)
-                _userService = DependencyService.Get<IUserService>();
+            _userService = DependencyService.Get<IUserService>();
 
             SignupCommand = new Command(SignupAsync);
             LoginCommand = new Command(async () =>

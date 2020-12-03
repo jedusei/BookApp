@@ -60,8 +60,7 @@ namespace BookApp.ViewModels
 
         public AddReviewViewModel()
         {
-            if (!DesignMode.IsDesignModeEnabled)
-                _bookService = DependencyService.Get<IBookService>();
+            _bookService = DependencyService.Get<IBookService>();
 
             SelectBookCommand = new Command<CollectionView>(SelectBook);
             NextCommand = new Command(Next, () => _currentPage == 1 && _rating >= 0);

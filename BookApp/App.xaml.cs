@@ -69,8 +69,7 @@ namespace BookApp
 
         protected override async void OnStart()
         {
-            if (!DesignMode.IsDesignModeEnabled)
-                await DependencyService.Get<INavigationService>().InitializeAsync();
+            await DependencyService.Get<INavigationService>().InitializeAsync();
 
             Status = AppStatus.Started;
         }

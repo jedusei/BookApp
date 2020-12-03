@@ -27,8 +27,7 @@ namespace BookApp.ViewModels
 
         public BookListViewModel()
         {
-            if (!DesignMode.IsDesignModeEnabled)
-                _bookService = DependencyService.Get<IBookService>();
+            _bookService = DependencyService.Get<IBookService>();
 
             AddReviewCommand = new Command(async () =>
             {
