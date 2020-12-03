@@ -12,7 +12,13 @@
     <ContentView.Content>
         <StackLayout Orientation="Vertical">
             <controls:SearchEntry WidthRequest="315" VerticalOptions="Start" HeightRequest="70" HorizontalOptions="Center" 
-                                  Placeholder="Search for book" Icon="search"/>
+                                  Placeholder="Search for book" Icon="search">
+                <ContentView.Triggers>
+                    <DataTrigger TargetType="controls:SearchEntry" Binding="{Binding Books.Count, FallbackValue=0}" Value="0">
+                        <Setter Property="Opacity" Value="0"/>
+                    </DataTrigger>
+                </ContentView.Triggers>
+            </controls:SearchEntry>
 
             <Label Text="Books reviewed by you" TextColor="#384F7D" Style="{StaticResource BoldText}" Opacity="0.8" Padding="20,20,0,5" TextTransform="Uppercase">
                 <Label.Triggers>
