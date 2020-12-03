@@ -19,6 +19,8 @@ namespace BookApp.ViewModels
             set => SetProperty(ref _loadStatus, value);
         }
         public ObservableCollection<Friend> Friends { get; private set; }
+        public bool ShowList => (_loadStatus != LoadStatus.Loading) && (Friends?.Count != 0);
+        public bool ShowEmptyView => (_loadStatus != LoadStatus.Loading) && (Friends?.Count == 0);
         public ICommand AddFriendsCommand { get; private set; }
         public ICommand OpenChatCommand { get; private set; }
 
@@ -34,9 +36,19 @@ namespace BookApp.ViewModels
             LoadStatus = LoadStatus.Loading;
 
             Friends = await _friendService.GetFriendsAsync();
-            OnPropertyChanged(nameof(Friends));
 
             LoadStatus = LoadStatus.Loaded;
+
+            Friends.CollectionChanged += OnFriendListChanged;
+            OnPropertyChanged(nameof(Friends));
+            OnPropertyChanged(nameof(ShowList));
+            OnPropertyChanged(nameof(ShowEmptyView));
+        }
+
+        void OnFriendListChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(ShowList));
+            OnPropertyChanged(nameof(ShowEmptyView));
         }
     }
 }

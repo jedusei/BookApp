@@ -8,7 +8,7 @@
              mc:Ignorable="d">
     <ContentView.Content>
         <AbsoluteLayout>
-            <CollectionView Margin="0,36.5,0,0" IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
+            <CollectionView Margin="0,36.5,0,0" IsVisible="{Binding ShowList}" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
                                 AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
                 <CollectionView.Header>
                     <StackLayout Spacing="10" Padding="0,45,0,0">
@@ -36,14 +36,6 @@
                         <Label Text="Chat" TextTransform="Uppercase" Style="{StaticResource BoldText}" Background="White" Padding="30,30,0,10" Margin="0,20,0,0"/>
                     </StackLayout>
                 </CollectionView.Header>
-                <CollectionView.Triggers>
-                    <DataTrigger TargetType="CollectionView" Binding="{Binding Friends.Count, FallbackValue=0}" Value="0">
-                        <Setter Property="IsVisible" Value="False"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="CollectionView" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
-                        <Setter Property="IsVisible" Value="True"/>
-                    </DataTrigger>
-                </CollectionView.Triggers>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <syncEffectsView:SfEffectsView HeightRequest="100" Padding="30,10" BackgroundColor="White">
@@ -73,15 +65,7 @@
                     <BoxView Color="Transparent" HeightRequest="80"/>
                 </CollectionView.Footer>
             </CollectionView>
-            <StackLayout IsVisible="False" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional">
-                <StackLayout.Triggers>
-                    <DataTrigger TargetType="StackLayout" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
-                        <Setter Property="IsVisible" Value="True"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="StackLayout" Binding="{Binding Friends.Count, FallbackValue=0}" Value="0">
-                        <Setter Property="IsVisible" Value="True"/>
-                    </DataTrigger>
-                </StackLayout.Triggers>
+            <StackLayout IsVisible="{Binding ShowEmptyView}" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional">
                 <Image Source="sad_face" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
                 <Label Text="You have friends as of yet. Just add your first friends to get started."  VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"
                                        HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
