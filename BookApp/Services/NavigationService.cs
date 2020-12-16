@@ -11,7 +11,10 @@ namespace BookApp.Services
     {
         public async Task InitializeAsync()
         {
-            await GoToPageAsync<MainPage>();
+            if (DependencyService.Get<IUserService>().IsLoggedIn)
+                await GoToPageAsync<MainPage>();
+            else
+                await GoToPageAsync<IntroPage>();
         }
 
         public async Task GoToPageAsync<TPage>(object navigationData = null, bool clearHistory = false, bool removeCurrentPage = false) where TPage : BasePage

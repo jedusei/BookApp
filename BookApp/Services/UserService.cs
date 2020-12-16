@@ -8,6 +8,15 @@ namespace BookApp.Services
 {
     class UserService : IUserService
     {
+        const string LOGGED_IN_KEY = "logged_in";
+
+        public bool IsLoggedIn { get; private set; }
+
+        public UserService()
+        {
+            IsLoggedIn = Preferences.Get(LOGGED_IN_KEY, false);
+        }
+
         public async Task<bool> LoginAsync(string email, string password)
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
@@ -17,7 +26,12 @@ namespace BookApp.Services
             }
 
             await Task.Delay(1500);
-            return password == "1234";
+            if (password != "1234")
+                return false;
+
+            Preferences.Set(LOGGED_IN_KEY, true);
+            IsLoggedIn = true;
+            return true;
         }
 
         public async Task<bool> SignupAsync(string email, string password)
@@ -29,12 +43,18 @@ namespace BookApp.Services
             }
 
             await Task.Delay(1500);
-            return email != "test"; // Assume test is already a registered user
+            if (email == "test")
+                return false;
+
+            Preferences.Set(LOGGED_IN_KEY, true);
+            IsLoggedIn = true;
+            return true;
         }
 
         public void Logout()
         {
-
+            Preferences.Clear(LOGGED_IN_KEY);
+            IsLoggedIn = false;
         }
     }
 }
