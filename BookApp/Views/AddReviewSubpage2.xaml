@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"  xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="BookApp.Views.AddReviewSubpage2">
+  <ContentView.Content>
+        <StackLayout Padding="20,0,20,20" VerticalOptions="Start" BindingContext="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type viewmodels:AddReviewViewModel}}}">
+            <Grid ColumnSpacing="25" RowSpacing="0" VerticalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Frame VerticalOptions="Center" Padding="0" CornerRadius="10">
+                    <ffimageloading:CachedImage x:Name="image" WidthRequest="130" HeightRequest="200" Source="{Binding SelectedBook.CoverImageUrl}" Success="CachedImage_Success" />
+                </Frame>
+
+                <StackLayout Spacing="0" Grid.Column="1" VerticalOptions="Center">
+                    <Label Text="{Binding SelectedBook.Title}" FontSize="25" Style="{StaticResource BoldText}" MaxLines="2" LineBreakMode="TailTruncation"/>
+                    <Label Text="{Binding SelectedBook.Author}" FontSize="20" 
+                                           Opacity="0.8" MaxLines="1" LineBreakMode="TailTruncation"/>
+
+                    <Label FontSize="14" Style="{StaticResource BoldText}" Margin="0,15,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="&#xf04ce;" FontFamily="MaterialIcons"/>
+                                <Span Text="{Binding SelectedBook.Rating, StringFormat=' {0:F2}'}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Text="{Binding SelectedBook.ReviewCount, StringFormat='{0:N0} reviews'}" Opacity="0.8"/>
+                </StackLayout>
+
+            </Grid>
+
+            <Label Text="{Binding SelectedBook.Description}" FontSize="16" MaxLines="5" LineBreakMode="TailTruncation"
+                                   Opacity="0.8" Margin="0,20" LineHeight="1.5"/>
+
+            <Label Text="Full Synopsis" FontSize="16" Style="{StaticResource BoldText}" TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenWebLinkCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <BoxView Color="#384F7D" Opacity="0.1" HeightRequest="1" Margin="0,30"/>
+
+            <Label HorizontalOptions="Center" Text="Tap to add rating" Style="{StaticResource BoldText}" Opacity="0.8" TextTransform="Uppercase"/>
+            <xforms:SfRating Precision="Half" Value="{Binding Rating, Mode=TwoWay}" ItemSize="18" HorizontalOptions="Center" Margin="0,5">
+                <xforms:SfRating.RatingSettings>
+                    <xforms:SfRatingSettings RatedFill="#FFD381" UnRatedFill="#40384F7D" RatedStrokeWidth="0" UnRatedStrokeWidth="0"/>
+                </xforms:SfRating.RatingSettings>
+            </xforms:SfRating>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

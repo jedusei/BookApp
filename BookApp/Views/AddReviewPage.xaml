@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="BookApp.Views.AddReviewPage"
+                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+                xmlns:viewmodels="clr-namespace:BookApp.ViewModels" 
+                xmlns:views="clr-namespace:BookApp.Views"
+                mc:Ignorable="d"
+                x:Name="this"> 
+    <ContentPage.BindingContext>
+        <viewmodels:AddReviewViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <AbsoluteLayout Background="{StaticResource PageGradientBackground}">
+            <Path Aspect="Fill" StrokeThickness="0" AbsoluteLayout.LayoutBounds="0,0,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional"
+                  Data="M0 136.5V0H372V136.5C194.782 160.467 124.363 152.191 0 136.5Z">
+                <Path.Fill>
+                    <LinearGradientBrush StartPoint="0.2,1" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#F66EB4"/>
+                        <GradientStop Offset="1" Color="#FEB665"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+
+            <syncEffectsView:SfEffectsView Padding="10" CornerRadius="50" AbsoluteLayout.LayoutBounds="10,62">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </ContentView.GestureRecognizers>
+
+                <Image Source="arrow_left" WidthRequest="25" HeightRequest="25"/>
+            </syncEffectsView:SfEffectsView>
+
+            <Label Text="Add Book Review" Style="{StaticResource TitleText}" AbsoluteLayout.LayoutBounds="0.5,0" AbsoluteLayout.LayoutFlags="XProportional"/>
+
+            <CarouselView x:Name="carouselView" Position="{Binding CurrentPage, Mode=OneWay}" IsSwipeEnabled="False" AbsoluteLayout.LayoutBounds="0.5,125" AbsoluteLayout.LayoutFlags="XProportional">
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type x:Object}">
+                        <views:AddReviewSubpage1/>
+                        <views:AddReviewSubpage2/>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Content="{Binding}"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <Button Text="Next" WidthRequest="300" HorizontalOptions="Center" Command="{Binding NextCommand}"
+                    AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" VerticalOptions="End" Margin="0,30"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</base:BasePage>

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookApp.Views.IntroPage"
+             xmlns:models="clr-namespace:BookApp.Models"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="#F0F4FD" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.BindingContext>
+        <viewmodels:IntroViewModel/>
+    </ContentPage.BindingContext>
+
+    <AbsoluteLayout>
+        <Ellipse Fill="#26E084F1" WidthRequest="270" HeightRequest="270" 
+                 AbsoluteLayout.LayoutBounds="0,1" AbsoluteLayout.LayoutFlags="YProportional"
+                 TranslationX="-60" TranslationY="180">
+        </Ellipse>
+        <StackLayout Orientation="Vertical" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+            <CarouselView x:Name="carouselView" IndicatorView="{Reference indicatorView}" Position="{Binding CurrentPage}">
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{Type models:IntroItem}">
+                        <models:IntroItem Title="Read Books" Description="Create your account to get started. After that, you can share books and make friends." Image="book">
+                            <models:IntroItem.ImageBackground>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="#25CED1" Offset="0"/>
+                                    <GradientStop Color="#34E6E9" Offset="0.5"/>
+                                    <GradientStop Color="#6AFCFF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </models:IntroItem.ImageBackground>
+                            <models:IntroItem.BackgroundView>
+                                <AbsoluteLayout>
+                                    <Ellipse WidthRequest="80" HeightRequest="80" TranslationX="-20" TranslationY="50">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush EndPoint="1.5,1.5">
+                                                <GradientStop Color="#FEB665" Offset="0"/>
+                                                <GradientStop Color="#F66EB4" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Ellipse WidthRequest="80" HeightRequest="80" AbsoluteLayout.LayoutBounds="0.9,0.2" AbsoluteLayout.LayoutFlags="PositionProportional">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                                <GradientStop Color="#2DEEF9" Offset="0"/>
+                                                <GradientStop Color="#E084F1" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </AbsoluteLayout>
+                            </models:IntroItem.BackgroundView>
+                        </models:IntroItem>
+                        <models:IntroItem Title="Review Them" Description="Create your account to get started. After that, you can share books and make friends." Image="star">
+                            <models:IntroItem.ImageBackground>
+                                <LinearGradientBrush EndPoint="1,1">
+                                    <GradientStop Color="#FFF17C" Offset="0"/>
+                                    <GradientStop Color="#FF8B8E" Offset="1"/>
+                                </LinearGradientBrush>
+                            </models:IntroItem.ImageBackground>
+                            <models:IntroItem.BackgroundView>
+                                <AbsoluteLayout>
+                                    <Ellipse WidthRequest="38" HeightRequest="38" TranslationX="20" TranslationY="120">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush EndPoint="1,1">
+                                                <GradientStop Color="#FEB665" Offset="0"/>
+                                                <GradientStop Color="#F66EB4" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Ellipse WidthRequest="132" HeightRequest="132" TranslationY="-66"
+                                             AbsoluteLayout.LayoutBounds="0.8,0" AbsoluteLayout.LayoutFlags="PositionProportional">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                                <GradientStop Color="#2DEEF9" Offset="0"/>
+                                                <GradientStop Color="#E084F1" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </AbsoluteLayout>
+                            </models:IntroItem.BackgroundView>
+                        </models:IntroItem>
+                        <models:IntroItem Title="Share, Make Friends" Description="Create your account to get started. After that, you can share books and make friends." Image="share_person">
+                            <models:IntroItem.ImageBackground>
+                                <LinearGradientBrush EndPoint="0.7,0.7">
+                                    <GradientStop Color="#F2ADEA" Offset="0.3"/>
+                                    <GradientStop Color="#D783EB" Offset="1"/>
+                                </LinearGradientBrush>
+                            </models:IntroItem.ImageBackground>
+                            <models:IntroItem.BackgroundView>
+                                <AbsoluteLayout>
+                                    <Ellipse WidthRequest="90" HeightRequest="90" TranslationX="20" TranslationY="-30">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush EndPoint="1.5,1.5">
+                                                <GradientStop Color="#FEB665" Offset="0"/>
+                                                <GradientStop Color="#F66EB4" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Ellipse WidthRequest="32" HeightRequest="32" AbsoluteLayout.LayoutBounds="0.85,0.2" AbsoluteLayout.LayoutFlags="PositionProportional">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                                <GradientStop Color="#90F35D" Offset="0"/>
+                                                <GradientStop Color="#08D340" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </AbsoluteLayout>
+                            </models:IntroItem.BackgroundView>
+                        </models:IntroItem>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <AbsoluteLayout>
+                            <ContentView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" Content="{Binding BackgroundView}"/>
+                            <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="Center" Padding="20"
+                                        AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional">
+                                <AbsoluteLayout>
+                                    <Ellipse Fill="{Binding ImageBackground}" WidthRequest="200" HeightRequest="200"/>
+                                    <Image Source="{Binding Image}" WidthRequest="80" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                                </AbsoluteLayout>
+                                <Label Text="{Binding Title}" TextColor="#384F7D" Style="{StaticResource BoldText}" FontSize="32" Margin="0,30,0,10"/>
+                                <Label Text="{Binding Description}" TextColor="#CC384F7D" FontSize="16" HorizontalTextAlignment="Center"/>
+                            </FlexLayout>
+                        </AbsoluteLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <IndicatorView x:Name="indicatorView" IndicatorSize="12" IndicatorColor="#268EF15C" SelectedIndicatorColor="#8EF15C" Margin="0,0,150,0" VerticalOptions="Center"/>
+                <Frame WidthRequest="42" HeightRequest="48" CornerRadius="100" Padding="0" HasShadow="False" MinimumHeightRequest="0" MinimumWidthRequest="0" VerticalOptions="Center">
+                    <Frame.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#BAFB67" Offset="0"/>
+                            <GradientStop Color="#00D23A" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NextCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="arrow_right" Scale="0.5"/>
+                </Frame>
+            </StackLayout>
+            <Label Text="Skip Intro" TextColor="#445984" FontSize="16" Style="{StaticResource BoldText}" HorizontalOptions="Center" Margin="0,20,0,50" TextDecorations="Underline">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Position, Source={Reference carouselView}}" Value="2">
+                        <Setter Property="Opacity" Value="0"/>
+                    </DataTrigger>
+                </Label.Triggers>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SkipCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </AbsoluteLayout>
+
+</base:BasePage>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookApp.Views.ImportingContactsPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             mc:Ignorable="d">
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Offset="0" Color="#FEB665"/>
+            <GradientStop Offset="0.8" Color="#F66EB4"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+        <StackLayout>
+            <progressBar:SfCircularProgressBar VerticalOptions="EndAndExpand"
+                IsIndeterminate="True" TrackInnerRadius="0.85" IndicatorInnerRadius="0.85" TrackOuterRadius="1" IndicatorOuterRadius="1" EndAngle="90" ProgressColor="White" TrackColor="#66FFFFFF"/>
+            <Label Text="We're importing your friends.&#x0a;This won't take too long." TextColor="White" FontSize="16" Margin="15"
+                    HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" LineHeight="1.5"  />
+        </StackLayout>
+    </ContentPage.Content>
+</base:BasePage>

@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Platform.cs" />
+    <Compile Include="Renderers\EntryRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,5 +143,68 @@
       <Project>{2495F3C0-B9F2-40EF-A6BC-D1D62C762D86}</Project>
       <Name>BookApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\share_person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eye_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\book_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\star_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bookmark_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sad_face.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\account_small.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lock.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\support.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bell_small.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\info.svg" />
   </ItemGroup>
 </Project>

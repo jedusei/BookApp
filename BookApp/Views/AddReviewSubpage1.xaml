@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
+             x:Class="BookApp.Views.AddReviewSubpage1">
+    <ContentView.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White"/>
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="1,0">
+                                            <GradientStop Offset="0" Color="#596C92"/>
+                                            <GradientStop Offset="1" Color="#445984"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentView.Resources>
+    
+    <ContentView.Content>
+        <Frame VerticalOptions="Start" BindingContext="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type viewmodels:AddReviewViewModel}}}" WidthRequest="315" Padding="0" CornerRadius="10" HorizontalOptions="Center">
+            <StackLayout Spacing="0">
+                <controls:SearchEntry Text="{Binding SearchText}" HorizontalOptions="FillAndExpand" CornerRadius="0" HasShadow="False"
+                                      Placeholder="What's the book's name?" Icon="search"/>
+
+                <BoxView HeightRequest="1" Color="#1A384F7D">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding SearchResults.Length, FallbackValue=0}" Value="0">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
+                <CollectionView ItemsSource="{Binding SearchResults}" HeightRequest="{Binding ResultsListHeight}" SelectionMode="Single"
+                                                 SelectionChangedCommand="{Binding SelectBookCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}}" >
+                    <CollectionView.Triggers>
+                        <DataTrigger TargetType="CollectionView" Binding="{Binding SearchResults.Length, FallbackValue=0}" Value="0">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </CollectionView.Triggers>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label TextColor="#384F7D" FontSize="18" MaxLines="1" LineBreakMode="TailTruncation"
+                                                        Padding="20,0" HeightRequest="50" VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Author}" FontSize="18" Style="{StaticResource BoldText}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Title}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

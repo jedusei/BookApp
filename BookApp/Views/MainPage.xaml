@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage  xmlns:base="clr-namespace:BookApp.Views.Base" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:BookApp.ViewModels" xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:views="clr-namespace:BookApp.Views" xmlns:bookapp="clr-namespace:BookApp"
+             x:Class="BookApp.Views.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="tabview:SfTabItem">
+                <Setter Property="FontIconFontFamily" Value="MaterialIcons"/>
+                <Setter Property="FontIconFontSize" Value="28"/>
+                <Setter Property="FontIconFontColor" Value="#73384F7D"/>
+                <Setter Property="TitleFontColor" Value="#73384F7D"/>
+                <Setter Property="TitleFontFamily" Value="CircularStd"/>
+                <Setter Property="TitleFontSize" Value="14"/>
+                <Setter Property="SelectionColor" Value="#384F7D"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout Background="{StaticResource PageGradientBackground}">
+        <Path Aspect="Fill" StrokeThickness="0" AbsoluteLayout.LayoutBounds="0,0,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional"
+            Data="M0 136.5V0H372V136.5C194.782 160.467 124.363 152.191 0 136.5Z">
+            <Path.Fill>
+                <LinearGradientBrush StartPoint="0.2,1" EndPoint="1,0">
+                    <GradientStop Offset="0" Color="#F66EB4"/>
+                    <GradientStop Offset="1" Color="#FEB665"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+            <Label Style="{StaticResource TitleText}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="0">
+                        <Setter Property="Text" Value="My Book List"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="1">
+                        <Setter Property="Text" Value="My Friends"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="2">
+                        <Setter Property="Text" Value="Notifications"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding SelectedIndex, Source={Reference tabView}}" Value="3">
+                        <Setter Property="Text" Value="Settings"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <tabview:SfTabView x:Name="tabView" VerticalOptions="FillAndExpand"  SelectionChanged="tabView_SelectionChanged" VisibleHeaderCount="4" EnableSwiping="False"
+                               TabHeaderPosition="Bottom" DisplayMode="ImageWithText" TabHeight="70" TabHeaderBackgroundColor="White">
+                <tabview:SfTabView.SelectionIndicatorSettings>
+                    <tabview:SelectionIndicatorSettings StrokeThickness="0"/>
+                </tabview:SfTabView.SelectionIndicatorSettings>
+                <tabview:SfTabItem Title="My Books" IconFont="&#xf125f;">
+                    <tabview:SfTabItem.Content>
+                        <views:BookListTab/>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+                <tabview:SfTabItem Title="Friends" IconFont="&#xf000e;">
+                    <tabview:SfTabItem.Content>
+                        <views:FriendListTab/>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+                <tabview:SfTabItem Title="Notifications" IconFont="&#xf009c;">
+                    <tabview:SfTabItem.Content>
+                        <BoxView/>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+                <tabview:SfTabItem Title="Settings" IconFont="&#xf0493;">
+                    <tabview:SfTabItem.Content>
+                        <views:SettingsTab/>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+            </tabview:SfTabView>
+        </StackLayout>
+
+    </AbsoluteLayout>
+
+
+
+</base:BasePage>

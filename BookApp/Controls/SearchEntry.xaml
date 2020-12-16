@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="BookApp.Controls.SearchEntry"
+       x:Name="this"
+       Padding="10,0"
+       HeightRequest="48"
+       CornerRadius="8">
+    <StackLayout Spacing="0" Orientation="Horizontal" BindingContext="{Reference this}">
+        <Image WidthRequest="16" Margin="4,0,8,0" Source="{Binding Icon}" VerticalOptions="Center"/>
+        <Entry Text="{Binding Text}" Margin="0,0,0,0" Placeholder="{Binding Placeholder}" PlaceholderColor="#A6384F7D"/>
+    </StackLayout>
+</Frame>

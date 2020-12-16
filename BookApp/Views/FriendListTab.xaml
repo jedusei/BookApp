@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             x:Class="BookApp.Views.FriendListTab"
+             x:Name="this"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="clr-namespace:BookApp.Models"
+             mc:Ignorable="d">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <CollectionView Margin="0,36.5,0,0" IsVisible="{Binding ShowList}" d:IsVisible="True" ItemsSource="{Binding Friends}" ItemSizingStrategy="MeasureFirstItem"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <CollectionView.Header>
+                    <StackLayout Spacing="10" Padding="0,45,0,0">
+                        <Label Text="Recently Added" FontSize="14" TextTransform="Uppercase" Style="{StaticResource BoldText}" Margin="30,0,0,0"/>
+                        <CollectionView ItemsSource="{Binding Friends}" HeightRequest="80">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.Header>
+                                <BoxView WidthRequest="30"/>
+                            </CollectionView.Header>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame HasShadow="False" Padding="0" WidthRequest="80" HeightRequest="80" CornerRadius="40">
+                                        <syncEffectsView:SfEffectsView TouchUpCommand="{Binding BindingContext.OpenChatCommand, Source={Reference this}}" TouchUpCommandParameter="{Binding}">
+                                            <Image Source="{Binding ProfileImageUrl}"/>
+                                        </syncEffectsView:SfEffectsView>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.Footer>
+                                <BoxView WidthRequest="20"/>
+                            </CollectionView.Footer>
+                        </CollectionView>
+                        <Label Text="Chat" TextTransform="Uppercase" Style="{StaticResource BoldText}" Background="White" Padding="30,30,0,10" Margin="0,20,0,0"/>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <syncEffectsView:SfEffectsView HeightRequest="100" Padding="30,10" BackgroundColor="White" 
+                                                       TouchUpCommand="{Binding BindingContext.OpenChatCommand, Source={Reference this}}" TouchUpCommandParameter="{Binding}">
+                            <Grid ColumnSpacing="20"> 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Frame HasShadow="False" Padding="0" HeightRequest="50" CornerRadius="25" Grid.RowSpan="2" VerticalOptions="Start">
+                                    <Image Source="{Binding ProfileImageUrl}"/>
+                                </Frame>
+
+                                <Label Text="{Binding Name}" Grid.Column="1" Style="{StaticResource BoldText}" FontSize="16"/>
+                                <Label Text="{Binding LastMessage.DateCreated, StringFormat='{0: h:mm tt}'}" Grid.Column="2" Opacity="0.6"/>
+                                <Label Text="{Binding LastMessage.Content}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" MaxLines="3" LineBreakMode="TailTruncation" Opacity="0.8"/>
+                            </Grid>
+                        </syncEffectsView:SfEffectsView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <BoxView Color="Transparent" HeightRequest="80"/>
+                </CollectionView.Footer>
+            </CollectionView>
+            <StackLayout IsVisible="{Binding ShowEmptyView}" AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Image Source="sad_face" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
+                <Label Text="You have friends as of yet. Just add your first friends to get started."  VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"
+                                       HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
+            </StackLayout>
+            <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   IsRunning="True" IsVisible="False">
+                <ActivityIndicator.Triggers>
+                    <DataTrigger TargetType="ActivityIndicator" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loading}">
+                        <Setter Property="IsVisible" Value="True"/>
+                    </DataTrigger>
+                </ActivityIndicator.Triggers>
+            </ActivityIndicator>
+            <Button AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" Command="{Binding AddFriendsCommand}"
+                    Text="Add Friends" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="0,20"/>
+        </AbsoluteLayout>
+
+    </ContentView.Content>
+</ContentView>

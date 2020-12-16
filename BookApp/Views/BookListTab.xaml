@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:BookApp.Controls" xmlns:viewmodels="clr-namespace:BookApp.ViewModels"
+             x:Class="BookApp.Views.BookListTab"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" 
+             xmlns:models="clr-namespace:BookApp.Models" 
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:SearchEntry WidthRequest="315" VerticalOptions="Start" HeightRequest="70" HorizontalOptions="Center" 
+                                  Placeholder="Search for book" Icon="search">
+                <ContentView.Triggers>
+                    <DataTrigger TargetType="controls:SearchEntry" Binding="{Binding Books.Count, FallbackValue=0}" Value="0">
+                        <Setter Property="Opacity" Value="0"/>
+                    </DataTrigger>
+                </ContentView.Triggers>
+            </controls:SearchEntry>
+
+            <Label Text="Books reviewed by you" TextColor="#384F7D" Style="{StaticResource BoldText}" Opacity="0.8" Padding="20,20,0,5" TextTransform="Uppercase">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Books.Count, FallbackValue=0}" Value="0">
+                        <Setter Property="Opacity" Value="0"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            
+            <AbsoluteLayout>
+                <CollectionView IsVisible="False" d:IsVisible="True" ItemsSource="{Binding Books}" ItemSizingStrategy="MeasureFirstItem"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <CollectionView.Triggers>
+                        <DataTrigger TargetType="CollectionView" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loaded}">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger>
+                    </CollectionView.Triggers>                    
+                    <d:CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String></x:String>
+                            <x:String></x:String>
+                            <x:String></x:String>
+                        </x:Array>
+                    </d:CollectionView.ItemsSource>
+                    <CollectionView.EmptyView>
+                        <StackLayout TranslationY="-30">
+                            <Image Source="bookmark_add" WidthRequest="64" Margin="0,0,0,10" VerticalOptions="EndAndExpand"/>
+                            <Label Text="You have no books as of yet. Just add your first book review to get started."  VerticalOptions="StartAndExpand" LineBreakMode="WordWrap"
+                                       HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#CC384F7D" FontSize="18" WidthRequest="350"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView Padding="20,10">
+                                <Frame Padding="0" CornerRadius="10">
+                                    <syncEffectsView:SfEffectsView Padding="10">
+                                        <Grid ColumnSpacing="15">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <ffimage:CachedImage Grid.RowSpan="3" Source="{Binding CoverImageUrl}" HeightRequest="150"/>
+
+                                            <StackLayout Grid.Column="1">
+                                                <Label Text="{Binding Title}" d:Text="Title" LineBreakMode="TailTruncation" MaxLines="2" TextColor="#384F7D" FontSize="22" Style="{StaticResource BoldText}"/>
+                                            </StackLayout>
+
+                                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Author}" d:Text="Author" TextColor="#384F7D" FontSize="16" Opacity="0.8"
+                                                       HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation" MaxLines="1"/>
+
+                                            <xforms:SfRating Grid.Row="2" Grid.Column="1" InputTransparent="True"
+                                                                 Precision="Half" Value="{Binding Rating}" ItemSize="16">
+                                                <xforms:SfRating.RatingSettings>
+                                                    <xforms:SfRatingSettings RatedFill="#FFD381" UnRatedFill="#40384F7D" RatedStrokeWidth="0" UnRatedStrokeWidth="0"/>
+                                                </xforms:SfRating.RatingSettings>
+                                            </xforms:SfRating>
+                                        </Grid>
+                                    </syncEffectsView:SfEffectsView>
+                                </Frame>
+                            </ContentView>   
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                        <BoxView Color="Transparent" HeightRequest="80"/>
+                    </CollectionView.Footer>
+                </CollectionView>
+                <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   TranslationY="-50" IsRunning="True" IsVisible="False">
+                    <ActivityIndicator.Triggers>
+                        <DataTrigger TargetType="ActivityIndicator" Binding="{Binding LoadStatus}" Value="{Static models:LoadStatus.Loading}">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger>
+                    </ActivityIndicator.Triggers>
+                </ActivityIndicator>
+                <Button AbsoluteLayout.LayoutBounds="0.5,1" AbsoluteLayout.LayoutFlags="PositionProportional" Command="{Binding AddReviewCommand}"
+                    Text="Add Book Review" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="0,20"/>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

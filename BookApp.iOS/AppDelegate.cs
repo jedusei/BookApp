@@ -22,9 +22,16 @@ namespace BookApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental", "Brush_Experimental", "Shapes_Experimental", "CarouselView_Experimental");
             global::Xamarin.Forms.Forms.Init();
+
+            Syncfusion.XForms.iOS.EffectsView.SfEffectsViewRenderer.Init();
+            Syncfusion.XForms.iOS.ProgressBar.SfCircularProgressBarRenderer.Init();
+
             LoadApplication(new App());
+
+            Syncfusion.SfRating.XForms.iOS.SfRatingRenderer.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

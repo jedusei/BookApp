@@ -2,31 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
 using Xamarin.Forms;
-
-using BookApp.Models;
 using BookApp.Services;
+using System.Threading.Tasks;
 
 namespace BookApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        protected readonly INavigationService _navigationService;
 
-        bool isBusy = false;
-        public bool IsBusy
+        public BaseViewModel()
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            _navigationService = DependencyService.Get<INavigationService>();
         }
 
-        string title = string.Empty;
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
+        public virtual Task InitializeAsync(object navigationData) => Task.CompletedTask;
+        public virtual void OnStart() { }
+        public virtual void OnResume(object navigationData = null) { }
+        public virtual void OnPause() { }
+        public virtual void OnDestroy() { }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",

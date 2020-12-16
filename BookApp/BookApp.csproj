@@ -1,12 +1,92 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Circular Std Bold.ttf" />
+    <None Remove="Assets\Circular-Std.ttf" />
+    <None Remove="Assets\materialdesignicons-webfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Circular Std Bold.ttf" />
+    <EmbeddedResource Include="Assets\Circular-Std.ttf" />
+    <EmbeddedResource Include="Assets\materialdesignicons-webfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.468" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.3.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.3.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.3.0.51" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\SearchEntry.xaml.cs">
+      <DependentUpon>SearchEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddFriendsPage.xaml.cs">
+      <DependentUpon>AddFriendsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsTab.xaml.cs">
+      <DependentUpon>SettingsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\FriendListTab.xaml.cs">
+      <DependentUpon>FriendListTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReviewThanksPage.xaml.cs">
+      <DependentUpon>ReviewThanksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\IntroPage.xaml.cs">
+      <DependentUpon>IntroPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddReviewPage.xaml.cs">
+      <DependentUpon>AddReviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ImportingContactsPage.xaml.cs">
+      <DependentUpon>ImportingContactsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ChatPage.xaml.cs">
+      <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\_SamplePage.xaml.cs">
+      <DependentUpon>_SamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SignupPage.xaml.cs">
+      <DependentUpon>SignupPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\FormEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddReviewSubpage1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddReviewSubpage2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\_SamplePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BookListTab.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
